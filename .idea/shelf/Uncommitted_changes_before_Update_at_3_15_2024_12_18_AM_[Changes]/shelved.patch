@@ -1,0 +1,594 @@
+Index: app/src/main/java/com/example/prm392myquizapplication/data/Attempt.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/data/Attempt.java b/app/src/main/java/com/example/prm392myquizapplication/data/Attempt.java
+new file mode 100644
+--- /dev/null	(date 1710435617136)
++++ b/app/src/main/java/com/example/prm392myquizapplication/data/Attempt.java	(date 1710435617136)
+@@ -0,0 +1,111 @@
++package com.example.prm392myquizapplication.data;
++
++import android.os.Parcel;
++import android.os.Parcelable;
++
++import androidx.room.ColumnInfo;
++import androidx.room.Entity;
++import androidx.room.PrimaryKey;
++
++@Entity(tableName = "attempt")
++public class Attempt implements Parcelable {
++
++    @PrimaryKey(autoGenerate = false)
++    @ColumnInfo(name = "createdTimeAttempt")
++    private final long createdTime;
++    @ColumnInfo(name = "subject")
++    private final String subject;
++    @ColumnInfo(name = "correct")
++    private final int correct;
++    @ColumnInfo(name = "incorrect")
++    private final int incorrect;
++    @ColumnInfo(name = "earned")
++    private final int earned;
++    @ColumnInfo(name = "email")
++    private final String email;
++    @ColumnInfo(name = "overallPoints")
++    private int overallPoints;
++
++    public Attempt(long createdTime, String subject, int correct, int incorrect, int earned, String email) {
++        this.createdTime = createdTime;
++        this.subject = subject;
++        this.correct = correct;
++        this.incorrect = incorrect;
++        this.earned = earned;
++        this.email = email;
++    }
++
++    public void setOverallPoints(int overallPoints) {
++        this.overallPoints = overallPoints;
++    }
++
++    public long getCreatedTime() {
++        return createdTime;
++    }
++
++    public String getSubject() {
++        return subject;
++    }
++
++    public int getCorrect() {
++        return correct;
++    }
++
++    public int getIncorrect() {
++        return incorrect;
++    }
++
++    public int getEarned() {
++        return earned;
++    }
++
++    public String getEmail() {
++        return email;
++    }
++
++    public int getOverallPoints() {
++        return overallPoints;
++    }
++
++    public static Creator<Attempt> getCREATOR() {
++        return CREATOR;
++    }
++
++    protected Attempt(Parcel in) {
++        createdTime = in.readLong();
++        subject = in.readString();
++        correct = in.readInt();
++        incorrect = in.readInt();
++        earned = in.readInt();
++        email = in.readString();
++        overallPoints = in.readInt();
++    }
++
++    @Override
++    public void writeToParcel(Parcel dest, int flags) {
++        dest.writeLong(createdTime);
++        dest.writeString(subject);
++        dest.writeInt(correct);
++        dest.writeInt(incorrect);
++        dest.writeInt(earned);
++        dest.writeString(email);
++        dest.writeInt(overallPoints);
++    }
++
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++
++    public static final Creator<Attempt> CREATOR = new Creator<Attempt>() {
++        @Override
++        public Attempt createFromParcel(Parcel in) {
++            return new Attempt(in);
++        }
++
++        @Override
++        public Attempt[] newArray(int size) {
++            return new Attempt[size];
++        }
++    };
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/prm392myquizapplication/data/Subject.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/data/Subject.java b/app/src/main/java/com/example/prm392myquizapplication/data/Subject.java
+new file mode 100644
+--- /dev/null	(date 1710435522942)
++++ b/app/src/main/java/com/example/prm392myquizapplication/data/Subject.java	(date 1710435522942)
+@@ -0,0 +1,72 @@
++package com.example.prm392myquizapplication.data;
++
++import android.os.Parcel;
++import android.os.Parcelable;
++
++import androidx.annotation.NonNull;
++import androidx.room.ColumnInfo;
++import androidx.room.Entity;
++import androidx.room.PrimaryKey;
++
++@Entity(tableName = "subject")
++public class Subject implements Parcelable {
++
++    @PrimaryKey(autoGenerate = true)
++    @ColumnInfo(name = "SubjectID")
++    private int SubjectID;
++
++    @NonNull
++    @ColumnInfo(name = "SubjectName")
++    private String SubjectName;
++
++    public Subject(){}
++
++    public Subject(@NonNull String subjectName) {
++        SubjectName = subjectName;
++    }
++
++    public int getSubjectID() {
++        return SubjectID;
++    }
++
++    public void setSubjectID(int subjectID) {
++        SubjectID = subjectID;
++    }
++
++    @NonNull
++    public String getSubjectName() {
++        return SubjectName;
++    }
++
++    public void setSubjectName(@NonNull String subjectName) {
++        SubjectName = subjectName;
++    }
++
++    protected Subject(Parcel in) {
++        SubjectID = in.readInt();
++        SubjectName = in.readString();
++    }
++
++    public static final Creator<Subject> CREATOR = new Creator<Subject>() {
++        @Override
++        public Subject createFromParcel(Parcel in) {
++            return new Subject(in);
++        }
++
++        @Override
++        public Subject[] newArray(int size) {
++            return new Subject[size];
++        }
++    };
++
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++
++    @Override
++    public void writeToParcel(Parcel parcel, int i) {
++        parcel.writeInt(SubjectID);
++        parcel.writeString(SubjectName);
++    }
++}
+Index: app/src/main/java/com/example/prm392myquizapplication/data/Quiz.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/data/Quiz.java b/app/src/main/java/com/example/prm392myquizapplication/data/Quiz.java
+new file mode 100644
+--- /dev/null	(date 1710435602585)
++++ b/app/src/main/java/com/example/prm392myquizapplication/data/Quiz.java	(date 1710435602585)
+@@ -0,0 +1,145 @@
++package com.example.prm392myquizapplication.data;
++
++import android.os.Parcel;
++import android.os.Parcelable;
++
++import androidx.annotation.NonNull;
++import androidx.room.ColumnInfo;
++import androidx.room.Entity;
++import androidx.room.ForeignKey;
++import androidx.room.PrimaryKey;
++
++@Entity(tableName = "quiz",
++        foreignKeys = @ForeignKey(
++                entity = Subject.class,
++                parentColumns = "SubjectID",
++                childColumns = "SubjectID",
++                onDelete = ForeignKey.CASCADE
++        )
++)
++public class Quiz implements Parcelable {
++    @PrimaryKey(autoGenerate = true)
++    @ColumnInfo(name = "QuizID")
++    private int QuizID;
++    @NonNull
++    @ColumnInfo(name = "Question")
++    private String Question;
++    @NonNull
++    @ColumnInfo(name = "Answer1")
++    private String Answer1;
++    @NonNull
++    @ColumnInfo(name = "Answer2")
++    private String Answer2;
++    @NonNull
++    @ColumnInfo(name = "Answer3")
++    private String Answer3;
++    @NonNull
++    @ColumnInfo(name = "Answer4")
++    private String Answer4;
++    @NonNull
++    @ColumnInfo(name = "CorrectAnswer")
++    private String CorrectAnswer;
++    @ColumnInfo(name = "SubjectID")
++    private int SubjectID;
++    public Quiz(@NonNull String question, @NonNull String answer1, @NonNull String answer2, @NonNull String answer3, @NonNull String answer4, @NonNull String correctAnswer, int subjectID) {
++        Question = question;
++        Answer1 = answer1;
++        Answer2 = answer2;
++        Answer3 = answer3;
++        Answer4 = answer4;
++        CorrectAnswer = correctAnswer;
++        SubjectID = subjectID;
++    }
++    public Quiz(){}
++    public int getQuizID() {
++        return QuizID;
++    }
++    @NonNull
++    public String getQuestion() {
++        return Question;
++    }
++    @NonNull
++    public String getAnswer1() {
++        return Answer1;
++    }
++    @NonNull
++    public String getAnswer2() {
++        return Answer2;
++    }
++    @NonNull
++    public String getAnswer3() {
++        return Answer3;
++    }
++    @NonNull
++    public String getAnswer4() {
++        return Answer4;
++    }
++    @NonNull
++    public String getCorrectAnswer() {
++        return CorrectAnswer;
++    }
++    public int getSubjectID() {
++        return SubjectID;
++    }
++    public void setQuizID(int quizID) {
++        QuizID = quizID;
++    }
++    public void setQuestion(@NonNull String question) {
++        Question = question;
++    }
++    public void setAnswer1(@NonNull String answer1) {
++        Answer1 = answer1;
++    }
++    public void setAnswer2(@NonNull String answer2) {
++        Answer2 = answer2;
++    }
++    public void setAnswer3(@NonNull String answer3) {
++        Answer3 = answer3;
++    }
++    public void setAnswer4(@NonNull String answer4) {
++        Answer4 = answer4;
++    }
++    public void setCorrectAnswer(@NonNull String correctAnswer) {
++        CorrectAnswer = correctAnswer;
++    }
++    public void setSubjectID(int subjectID) {
++        SubjectID = subjectID;
++    }
++    public  static Creator<Quiz> getCreator(){return CREATOR; }
++    protected Quiz(Parcel in) {
++        QuizID = in.readInt();
++        Question = in.readString();
++        Answer1 = in.readString();
++        Answer2 = in.readString();
++        Answer3 = in.readString();
++        Answer4 = in.readString();
++        CorrectAnswer = in.readString();
++        SubjectID = in.readInt();
++    }
++    @Override
++    public void writeToParcel(Parcel dest, int flags) {
++        dest.writeInt(QuizID);
++        dest.writeString(Question);
++        dest.writeString(Answer1);
++        dest.writeString(Answer2);
++        dest.writeString(Answer3);
++        dest.writeString(Answer4);
++        dest.writeString(CorrectAnswer);
++        dest.writeInt(SubjectID);
++    }
++    public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
++        @Override
++        public Quiz createFromParcel(Parcel in) {
++            return new Quiz(in);
++        }
++
++        @Override
++        public Quiz[] newArray(int size) {
++            return new Quiz[size];
++        }
++    };
++    @Override
++    public int describeContents() {
++        return 0;
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectAdapter.java b/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectAdapter.java
+new file mode 100644
+--- /dev/null	(date 1710435789854)
++++ b/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectAdapter.java	(date 1710435789854)
+@@ -0,0 +1,113 @@
++package com.example.prm392myquizapplication.adapter;
++
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.cardview.widget.CardView;
++import androidx.recyclerview.widget.RecyclerView;
++
++import com.example.prm392myquizapplication.R;
++import com.example.prm392myquizapplication.dao.SubjectDao;
++import com.example.prm392myquizapplication.data.Subject;
++
++import java.util.List;
++
++public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.SelectedViewHolder>{
++    private final List<Subject> subjects;
++
++    private final SubjectDao subjectDao;
++
++    public interface OnUpdateClickListener {
++        void onUpdateClick(Subject subject);
++    }
++    private OnUpdateClickListener onUpdateClickListener;
++
++    // Thêm một phương thức để thiết lập listener
++    public void setOnUpdateClickListener(OnUpdateClickListener listener) {
++        this.onUpdateClickListener = listener;
++    }
++
++    public interface OnDeleteClickListener {
++        void onDeleteClick(Subject subject);
++    }
++    // Trong Adapter, khai báo một instance của interface
++    private OnDeleteClickListener onDeleteClickListener;
++
++    // Thêm một phương thức để thiết lập listener
++    public void setOnDeleteClickListener(OnDeleteClickListener listener) {
++        this.onDeleteClickListener = listener;
++    }
++
++    public SubjectAdapter(List<Subject> subjects, SubjectDao subjectDao) {
++        this.subjects = subjects;
++        this.subjectDao = subjectDao;
++    }
++    @NonNull
++    @Override
++    public SelectedViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
++        View view = layoutInflater.inflate(R.layout.item_subject, parent,false);
++        return new SelectedViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(@NonNull SelectedViewHolder holder, int position) {
++        Subject subject = subjects.get(position);
++
++        holder.txtSubject.setText(subject.getSubjectName());
++        //Thêm sự kiện nút update và delete
++
++        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                if (onUpdateClickListener != null) {
++                    onUpdateClickListener.onUpdateClick(subject);
++                }
++            }
++        });
++
++        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                if (onDeleteClickListener != null) {
++                    onDeleteClickListener.onDeleteClick(subject);
++                }
++            }
++        });
++
++
++        holder.cvParent.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                // DO NOTHING
++            }
++        });
++
++    }
++
++    @Override
++    public int getItemCount() {
++        return subjects.size();
++    }
++
++    public class SelectedViewHolder extends RecyclerView.ViewHolder{
++
++        public CardView cvParent;
++        public TextView txtSubject;
++
++        public Button btnUpdate, btnDelete;
++
++        public SelectedViewHolder(View v){
++            super(v);
++            cvParent = v.findViewById(R.id.cvSubjects);
++            txtSubject = v.findViewById(R.id.tv_subject_name);
++            btnUpdate = v.findViewById(R.id.btn_update_subject);
++            btnDelete = v.findViewById(R.id.btn_delete_subject);
++        }
++    }
++}
++
+Index: app/src/main/java/com/example/prm392myquizapplication/dao/SubjectDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/dao/SubjectDao.java b/app/src/main/java/com/example/prm392myquizapplication/dao/SubjectDao.java
+new file mode 100644
+--- /dev/null	(date 1710435522933)
++++ b/app/src/main/java/com/example/prm392myquizapplication/dao/SubjectDao.java	(date 1710435522933)
+@@ -0,0 +1,36 @@
++package com.example.prm392myquizapplication.dao;
++
++import androidx.room.Dao;
++import androidx.room.Delete;
++import androidx.room.Insert;
++import androidx.room.OnConflictStrategy;
++import androidx.room.Query;
++import androidx.room.Transaction;
++import androidx.room.Update;
++
++import com.example.prm392myquizapplication.data.Subject;
++
++import java.util.List;
++
++@Dao
++public interface SubjectDao {
++
++
++
++    @Insert(onConflict = OnConflictStrategy.ABORT)
++    void  insertSubject(Subject subject);
++
++    @Update
++    void updateSubject(Subject subject);
++
++    @Delete
++    public void deleteSubject(Subject subject);
++
++    @Transaction
++    @Query("SELECT * FROM subject")
++    public List<Subject> getAllSubjects();
++
++    @Transaction
++    @Query("SELECT COUNT(*) FROM quiz WHERE SubjectID = :SubjectID")
++    public int countQuizBySubject(int SubjectID);
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectListAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectListAdapter.java b/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectListAdapter.java
+new file mode 100644
+--- /dev/null	(date 1710435669050)
++++ b/app/src/main/java/com/example/prm392myquizapplication/adapter/SubjectListAdapter.java	(date 1710435669050)
+@@ -0,0 +1,54 @@
++package com.example.prm392myquizapplication.adapter;
++
++import android.content.Context;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.ArrayAdapter;
++import android.widget.TextView;
++
++import androidx.annotation.NonNull;
++import androidx.annotation.Nullable;
++
++import com.example.prm392myquizapplication.R;
++import com.example.prm392myquizapplication.data.Subject;
++
++import java.util.List;
++
++public class SubjectListAdapter extends ArrayAdapter<Subject> {
++
++    List<Subject> subjects;
++
++    public SubjectListAdapter(Context context, List<Subject> subjects) {
++        super(context, R.layout.item_subject_list, subjects);
++        this.subjects = subjects;
++    }
++
++    @Override
++    public View getView(int position, View convertView, ViewGroup parent) {
++        return initView(position, convertView, parent);
++    }
++
++    @Override
++    public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
++        return initView(position, convertView, parent);
++    }
++
++    private View initView(int position, View convertView, ViewGroup parent) {
++        if (convertView == null) {
++            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_subject_list, parent, false);
++        }
++        TextView textView = convertView.findViewById(R.id.tv_subject_name_list);
++        Subject subject = subjects.get(position);
++        if (subject != null) {
++            textView.setText(subject.getSubjectName());
++        }
++        return convertView;
++    }
++
++    @Override
++    public long getItemId(int position) {
++        Subject subject = subjects.get(position);
++        return subject != null ? subject.getSubjectID() : -1;
++    }
++}
