@@ -20,6 +20,7 @@ import com.example.prm392myquizapplication.other.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class QuizActivity extends AppCompatActivity {
 
     TextView Title, tvQuestion, tvTotal;
