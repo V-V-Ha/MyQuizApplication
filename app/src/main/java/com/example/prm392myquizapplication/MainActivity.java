@@ -1,4 +1,4 @@
-package com.example.prm392_quizapp;
+package com.example.prm392myquizapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.prm392_quizapp.data.User;
-import com.example.prm392_quizapp.other.SharedPref;
+import com.example.prm392myquizapplication.data.User;
+import com.example.prm392myquizapplication.other.SharedPref;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cvRule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,RuleActivity.class));
-            }
-        });
 
         cvHistory.setOnClickListener(new View.OnClickListener() {
             @Override

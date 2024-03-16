@@ -1,6 +1,6 @@
 package com.example.prm392myquizapplication.adapter;
 
-import static com.example.prm392_quizapp.other.Utils.formatDate;
+import static com.example.prm392myquizapplication.other.Utils.formatDate;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.prm392_quizapp.R;
-import com.example.prm392_quizapp.data.Attempt;
+import com.example.prm392myquizapplication.R;
+import com.example.prm392myquizapplication.data.Attempt;
 
 import java.util.List;
 

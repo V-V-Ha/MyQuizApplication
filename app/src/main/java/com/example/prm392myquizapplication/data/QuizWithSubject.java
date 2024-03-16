@@ -1,4 +1,4 @@
-package com.example.prm392_quizapp.data;
+package com.example.prm392myquizapplication.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

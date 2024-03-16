@@ -8,8 +8,8 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
-import com.example.prm392_quizapp.data.Quiz;
-import com.example.prm392_quizapp.data.QuizWithSubject;
+import com.example.prm392myquizapplication.data.Quiz;
+import com.example.prm392myquizapplication.data.QuizWithSubject;
 
 import java.util.List;
 

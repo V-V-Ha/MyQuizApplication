@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.prm392_quizapp.R;
-import com.example.prm392_quizapp.dao.QuizDao;
-import com.example.prm392_quizapp.data.Quiz;
+import com.example.prm392myquizapplication.R;
+import com.example.prm392myquizapplication.dao.QuizDao;
+import com.example.prm392myquizapplication.data.Quiz;
 
 import java.util.List;
 
