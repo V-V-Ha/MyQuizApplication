@@ -1,16 +1,85 @@
-package com.example.prm392myquizapplication;
+package com.example.prm392_quizapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import com.example.prm392_quizapp.data.User;
+import com.example.prm392_quizapp.other.SharedPref;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String a = "Vu Van Ha";
+        TextView tvUsername = findViewById(R.id.tvUsernameHome);
+        CardView cvStartQuiz = findViewById(R.id.cvStartQuiz);
+        CardView cvRule = findViewById(R.id.cvRule);
+        CardView cvHistory = findViewById(R.id.cvHistory);
+        CardView cvEditPassword = findViewById(R.id.cvEditPassword);
+        CardView cvLogout = findViewById(R.id.cvLogout);
+        CardView cvSubjectManager = findViewById(R.id.cvSubjectManager);
+        CardView cvQuizmanager = findViewById(R.id.cvQuizmanager);
+        SharedPref sharedPref = SharedPref.getInstance();
+        User user = sharedPref.getUser(this);
+        tvUsername.setText("Hello, " + user.getUsername());
+
+        cvStartQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SelectSubjectActivity.class));
+            }
+        });
+
+        cvRule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RuleActivity.class));
+            }
+        });
+
+        cvHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,HistoryActivity.class));
+            }
+        });
+
+        cvEditPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,EditPasswordActivity.class));
+            }
+        });
+        cvSubjectManager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SubjectManagementActivity.class));
+            }
+        });
+        cvQuizmanager.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, QuizManagementActivity.class));
+            }
+        });
+        cvLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sharedPref.clearSharedPref(MainActivity.this);
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+
+
     }
 }
