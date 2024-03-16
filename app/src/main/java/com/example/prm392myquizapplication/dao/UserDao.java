@@ -1,4 +1,4 @@
-package com.example.prm392_quizapp.dao;
+package com.example.prm392myquizapplication.dao;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -8,8 +8,8 @@ import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
 
-import com.example.prm392_quizapp.data.Attempt;
-import com.example.prm392_quizapp.data.User;
+import com.example.prm392myquizapplication.data.Attempt;
+import com.example.prm392myquizapplication.data.User;
 
 import java.util.List;
 
