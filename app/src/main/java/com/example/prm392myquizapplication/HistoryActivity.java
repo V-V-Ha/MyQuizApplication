@@ -1,4 +1,4 @@
-package com.example.prm392myquizapplication.;
+package com.example.prm392myquizapplication;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
