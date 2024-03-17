@@ -21,9 +21,8 @@
         <activity
             android:name=".SelectSubjectActivity"
             android:exported="false" />
-
         <activity android:name=".FinalResultActivity" />
-
+        <activity android:name=".FinalResultActivity" />
         <activity android:name=".EditPasswordActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".RegisterActivity" />

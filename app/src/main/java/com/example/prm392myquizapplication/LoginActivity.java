@@ -37,8 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         setTheme(R.style.Theme_QuizForFun);
         setContentView(R.layout.activity_login);
 
-        etUsername = findViewById(R.id.tietUsername);
-        etPassword = findViewById(R.id.tiePassword);
+        etUsername = findViewById(R.id.tvUsername);
+        etPassword = findViewById(R.id.tvPassword);
         TextView tvSignUp = findViewById(R.id.tvSignUp);
         Button btnLogin = findViewById(R.id.btnLogin);
 
