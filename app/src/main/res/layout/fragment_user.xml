@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.UserFragment">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="317dp"
+        android:layout_height="269dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/user_account_profile_avatar_person_student_male"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_logout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        android:background="@drawable/button_bg_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/BlueButtonStyle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_policy" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_history"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/history"
+        android:background="@drawable/button_bg_blue"
+        style="@style/BlueButtonStyle"
+        app:layout_constraintBottom_toTopOf="@+id/btn_policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_change_password" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_change_password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="@string/change_password"
+        android:background="@drawable/button_bg_blue"
+        style="@style/BlueButtonStyle"
+        android:onClick="OnChangePassword"
+        app:layout_constraintBottom_toTopOf="@+id/btn_history"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_policy"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Policy"
+        android:background="@drawable/button_bg_blue"
+        style="@style/BlueButtonStyle"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_history" />
+</androidx.constraintlayout.widget.ConstraintLayout>
