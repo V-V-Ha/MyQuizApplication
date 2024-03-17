@@ -29,9 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ImageView btnBack = findViewById(R.id.imageView);
-        EditText etUsername = findViewById(R.id.tietUsername);
-        EditText etEmail = findViewById(R.id.tietPassword);
-        EditText etPassword = findViewById(R.id.tiePassword);
+        EditText etUsername = findViewById(R.id.tvUsername);
+        EditText etEmail = findViewById(R.id.tvEmail);
+        EditText etPassword = findViewById(R.id.tvPassword);
         Button btnRegister = findViewById(R.id.btnRegister);
 
         btnBack.setOnClickListener(new View.OnClickListener() {

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F8F8"
     tools:context=".LoginActivity"
     tools:theme="@style/Theme.QuizForFun">
 
@@ -11,8 +12,8 @@
         android:id="@+id/tvSignUp2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="@string/welcome_back"
+        android:layout_marginTop="156dp"
+        android:text="Welcome Quiz"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -44,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSignUp3">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tietUsername"
+            android:id="@+id/tvUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/username"
@@ -63,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiePassword"
+            android:id="@+id/tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -77,10 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
+        android:padding="2dp"
         android:text="@string/don_t_have_an_account"
         android:textColor="@color/gray"
         android:textSize="18sp"
-        android:padding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvSignUp"
         app:layout_constraintHorizontal_bias="0.5"
@@ -92,10 +93,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:text="@string/sign_up"
-        android:textColor="@color/peach"
-        android:textSize="18sp"
         android:padding="2dp"
+        android:text="@string/sign_up"
+        android:textColor="@color/purple_200"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/tvSignUp4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -106,11 +107,28 @@
         android:id="@+id/btnLogin"
         style="@style/btnStyle"
         android:layout_width="0dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="140dp"
         android:text="@string/login"
+        app:backgroundTint="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="337dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignUp2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
