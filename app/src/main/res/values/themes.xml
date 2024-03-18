@@ -3,7 +3,7 @@
     <style name="Theme.QuizForFun" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/peach</item>
-        <item name="colorPrimaryVariant">@color/peach</item>
+        <item name="colorPrimaryVariant">@color/sky_blue</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
@@ -13,7 +13,7 @@
     </style>
 
     <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_image</item>
+        <item name="android:windowBackground">@drawable/quiz_logo</item>
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
