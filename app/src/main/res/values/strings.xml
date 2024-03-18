@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">QuizForFun</string>
-    <string name="password">Password</string>
+    <string name="password">Enter your Password</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="welcome_back">Welcome Back!</string>
@@ -19,7 +19,7 @@
     <string name="sign_up">SIGN UP</string>
     <string name="create_account">Create Account</string>
     <string name="register">Register</string>
-    <string name="email">Email</string>
+    <string name="email">Enter your Email</string>
     <string name="start_quiz">Start Quiz</string>
     <string name="rule">Rule</string>
     <string name="history">History</string>
@@ -61,6 +61,14 @@
     <string name="start_again">Start Again!</string>
     <string name="quiz_upc">QUIZ</string>
     <string name="user_upc">USER</string>
+    <string name="text_choose_app_vn">Choose Study Application</string>
+    <string name="text_choose_quiz">Quiz Learning Application</string>
+    <string name="text_choose_vocab">Vocabulary Learning Application</string>
+    <string name="signup_register_button">Have_account? <b>LOGIN NOW</b></string>
+    <string name="confirm_password">Confirm your Password</string>
+    <string name="phone_number">Enter your Phone Number</string>
+
+    <string name="full_name">Enter your Fullname</string>
 
     <string name="rules1_description">
         The Quiz will contain 5 randomized questions.
