@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,12 +7,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="24dp"
+
     android:layout_marginTop="8dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="8dp"
-
-    android:background="@color/blue_backgound"
-    >
+    android:clickable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,11 +19,9 @@
 
         <TextView
             android:id="@+id/textView20"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
-
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
@@ -35,10 +33,9 @@
 
         <TextView
             android:id="@+id/textView21"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
             android:text="@string/earned"
             app:layout_constraintBottom_toTopOf="@+id/textView22"
             app:layout_constraintStart_toStartOf="@+id/textView20"
@@ -46,9 +43,8 @@
 
         <TextView
             android:id="@+id/textView22"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
@@ -59,9 +55,8 @@
 
         <TextView
             android:id="@+id/textView23"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/blue_med"
@@ -72,9 +67,8 @@
 
         <TextView
             android:id="@+id/textView24"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/blue_med"
@@ -85,9 +79,8 @@
 
         <TextView
             android:id="@+id/textView25"
-            style="@style/text_heading2"
+            style="@style/text_heading"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/chakrapetchbold"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/blue_med"

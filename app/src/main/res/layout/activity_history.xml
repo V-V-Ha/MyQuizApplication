@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_backgound"
     tools:context=".HistoryActivity">
 
     <ImageView
@@ -22,23 +21,20 @@
 
     <TextView
         android:id="@+id/textView"
-        style="@style/titleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:fontFamily="@font/chakrapetchbold"
+        android:layout_marginStart="24dp"
         android:text="@string/history"
+        style="@style/titleTextStyle"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewHistory"
         app:layout_constraintStart_toEndOf="@+id/imageViewHistory"
-        app:layout_constraintTop_toTopOf="@+id/imageViewHistory"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewHistory" />
 
     <TextView
         android:id="@+id/textView9"
         style="@style/text_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginTop="32dp"
         android:text="@string/overall_points"
         app:layout_constraintStart_toStartOf="@+id/imageViewHistory"
@@ -48,7 +44,6 @@
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
         android:text="@string/total_questions"
@@ -58,30 +53,26 @@
 
     <TextView
         android:id="@+id/tvOverAllPointsHistory"
-        style="@style/text_heading"
         android:layout_width="wrap_content"
-        android:fontFamily="@font/chakrapetchbold"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="11dp"
-        android:textColor="@color/black"
+        tools:text="60"
+        style="@style/text_heading"
+        android:textColor="@color/blue_med"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toTopOf="@+id/textView9"
-
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="60" />
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/tvTotalQuestionsHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/chakrapetchbold"
-        android:textColor="@color/black"
         android:layout_marginStart="16dp"
         tools:text="16"
         style="@style/text_heading"
+        android:textColor="@color/blue_med"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
         app:layout_constraintStart_toEndOf="@+id/textView17"
