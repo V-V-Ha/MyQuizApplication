@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_backgound"
     tools:context=".FinalResultActivity">
 
     <ImageView
@@ -25,30 +26,56 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="@string/final_result"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         style="@style/titleTextStyle"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewFinalResultQuiz"
         app:layout_constraintStart_toEndOf="@+id/imageViewFinalResultQuiz"
-        app:layout_constraintTop_toTopOf="@+id/imageViewFinalResultQuiz" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageViewFinalResultQuiz"
+        app:layout_constraintHorizontal_bias="0.3" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/imageViewBelowFinalResult"
+        android:layout_width="259dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/cup"
+        app:layout_constraintEnd_toEndOf="@id/textView"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <TextView
         android:id="@+id/tvWellDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/chakrapetchbold"
         android:textColor="@color/black"
+        android:textSize="28sp"
         android:textStyle="bold"
-        android:textSize="18sp"
-        tools:text="Well Done, kevin0078"
         app:layout_constraintStart_toStartOf="@+id/imageViewFinalResultQuiz"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="Well Done, kevin0078" />
 
     <TextView
         android:id="@+id/textView10"
         style="@style/text_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/chakrapetchbold"
         android:text="@string/subject"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/tvWellDone"
         app:layout_constraintTop_toBottomOf="@+id/tvWellDone" />
 
@@ -56,6 +83,8 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginTop="16dp"
         android:text="@string/correct"
         style="@style/text_heading"
@@ -66,6 +95,8 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginTop="16dp"
         android:text="@string/incorrect"
         style="@style/text_heading"
@@ -76,6 +107,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginTop="16dp"
         android:text="@string/earned"
         style="@style/text_heading"
@@ -85,6 +118,8 @@
     <TextView
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/overall_points"
@@ -95,6 +130,8 @@
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/date"
@@ -106,6 +143,7 @@
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginStart="16dp"
         tools:text="Math"
         style="@style/text_value_heading"
@@ -119,18 +157,21 @@
         android:layout_width="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/chakrapetchbold"
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:text="@string/start_again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         tools:text="3"
         style="@style/text_value_heading"
         app:layout_constraintBottom_toBottomOf="@+id/textView11"
@@ -141,6 +182,7 @@
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         tools:text="2"
         style="@style/text_value_heading"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
@@ -151,6 +193,7 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginStart="1dp"
         tools:text="20"
         style="@style/text_value_heading"
@@ -162,6 +205,7 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         tools:text="60"
         style="@style/text_value_heading"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
@@ -173,6 +217,7 @@
         style="@style/text_value_heading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView29"

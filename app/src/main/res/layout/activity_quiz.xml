@@ -4,132 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GeographyOrLiteratureQuizActivity">
+    android:background="@color/blue_backgound">
 
-    <androidx.core.widget.NestedScrollView
+    <TextView
+        android:id="@+id/tv_quiz_subject2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chakrapetchbold"
+        android:text="@string/literature_quiz"
+        android:textColor="@android:color/white"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:background="@color/blue_backgound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/tv_quiz_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/chakrapetchbold"
+            android:gravity="center"
+            android:text="@string/literature_quiz"
+            android:textColor="@color/black"
+            android:textSize="46sp"
+            app:layout_constraintStart_toStartOf="@id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout" />
+
+        <ImageView
+            android:id="@+id/imageViewStartQuiz"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow"
+            app:tint="@color/black" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="21dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="tv_quiz_subject" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_quiz_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:text="What is the last name of Hitler?"
+        android:fontFamily="@font/chakrapetchbold"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupQuiz"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_quiz_question">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            style="@style/text_radio_button_answer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Answer 1"
+            android:textSize="25sp" />
 
+        <RadioButton
+            android:id="@+id/radioButton2"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 2" />
 
+        <RadioButton
+            android:id="@+id/radioButton3"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 3" />
 
-            <ImageView
-                android:id="@+id/imageViewStartQuiz"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/arrow"
-                app:tint="@color/black" />
+        <RadioButton
+            android:id="@+id/radioButton4"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 4" />
+    </RadioGroup>
 
-            <TextView
-                android:id="@+id/tv_quiz_subject"
-                style="@style/titleTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewStartQuiz"
-                app:layout_constraintStart_toEndOf="@+id/imageViewStartQuiz"
-                app:layout_constraintTop_toTopOf="@+id/imageViewStartQuiz"
-                tools:text="@string/literature_quiz" />
+    <TextView
+        android:id="@+id/current_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chakrapetchbold"
+        android:text="Question: 2"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroupQuiz"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupQuiz"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupQuiz" />
 
-            <TextView
-                android:id="@+id/tv_quiz_question"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="24dp"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_quiz_subject"
-                tools:text="What is the
-last name of Hitler?" />
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnNextQuestion"
-                style="@style/btnStyle"
-                android:layout_width="0dp"
-                android:layout_marginBottom="40dp"
-                android:imeOptions="actionDone"
-                android:singleLine="true"
-                android:text="@string/next"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tv_quiz_question"
-                app:layout_constraintStart_toStartOf="@+id/tv_quiz_question" />
-
-            <RadioGroup
-                android:id="@+id/radioGroupQuiz"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-
-
-                app:layout_constraintEnd_toEndOf="@+id/tv_quiz_question"
-                app:layout_constraintStart_toStartOf="@+id/tv_quiz_question"
-                app:layout_constraintTop_toBottomOf="@+id/tv_quiz_question">
-
-                <RadioButton
-                    android:id="@+id/radioButton1"
-                    style="@style/text_radio_button_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Answer 1" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    style="@style/text_radio_button_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Answer 2" />
-
-
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    style="@style/text_radio_button_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Answer 3" />
-
-                <RadioButton
-                    android:id="@+id/radioButton4"
-                    style="@style/text_radio_button_answer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:text="Answer 4" />
-
-
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/current_quiz"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:layout_marginBottom="60dp"
-                android:textColor="@color/black"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/btnNextQuestion"
-                app:layout_constraintEnd_toEndOf="@+id/radioGroupQuiz"
-                app:layout_constraintStart_toStartOf="@+id/radioGroupQuiz"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroupQuiz"
-                tools:text="Current Question: 2" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    <Button
+        android:id="@+id/btnNextQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_quiz"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
