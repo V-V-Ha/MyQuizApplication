@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -99,7 +100,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
         public CardView cvParent;
         public TextView txtSubject;
 
-        public Button btnUpdate, btnDelete;
+        public ImageView btnUpdate, btnDelete, btnAdd;
 
         public SelectedViewHolder(View v){
             super(v);
@@ -107,7 +108,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
             txtSubject = v.findViewById(R.id.tv_subject_name);
             btnUpdate = v.findViewById(R.id.btn_update_subject);
             btnDelete = v.findViewById(R.id.btn_delete_subject);
+
         }
     }
 }
-
