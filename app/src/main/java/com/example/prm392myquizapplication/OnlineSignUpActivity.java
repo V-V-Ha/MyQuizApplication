@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.prm392myquizapplication.dao.DatabaseAccess;
-import com.example.prm392myquizapplication.data.MessageObject;
+import com.example.prm392myquizapplication.other.MessageObject;
 import com.example.prm392myquizapplication.data.OnlineUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -73,7 +73,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                 {
                     messageObject.ShowDialogMessage(Gravity.CENTER,
                             OnlineSignUpActivity.this,
-                            "Vui lòng điền đầy đủ thông tin của bạn!!",
+                            "Please fill your information!!",
                             0);
                 }
                 else{
@@ -92,7 +92,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                                         Boolean insert = DB.insertData(mAuth.getCurrentUser().getUid(),hoten,email,sdt,0, 1);
                                         DB.close();
                                         btnSignUp.setText(insert.toString());
-                                        Toast.makeText(OnlineSignUpActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(OnlineSignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
 
                                         // if the user created intent to login activity
                                         rootNode= FirebaseDatabase.getInstance();
@@ -106,7 +106,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                                     else {
                                         messageObject.ShowDialogMessage(Gravity.CENTER,
                                                 OnlineSignUpActivity.this,
-                                                "Đăng ký thất bại!!",
+                                                "Sign up failed!!",
                                                 0);
                                     }
                                 }
@@ -115,7 +115,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                         else{
                             messageObject.ShowDialogMessage(Gravity.CENTER,
                                     OnlineSignUpActivity.this,
-                                    "Email đã được đăng ký!!",
+                                    "Email has been sign!!",
                                     0);
                         }
 
@@ -124,7 +124,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                     else{
                         messageObject.ShowDialogMessage(Gravity.CENTER,
                                 OnlineSignUpActivity.this,
-                                "Xác nhận lại, mật khẩu không trùng khớp!!",
+                                "Passwords are not same!!!",
                                 0);
                         edtMatKhau.setText("");
                         edtXacNhan.setText("");
