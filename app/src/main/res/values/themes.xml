@@ -86,5 +86,8 @@
         <item name="buttonTint">@color/peach</item>
     </style>
 
-
+    <style name="text_heading2">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
