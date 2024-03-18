@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -101,7 +102,7 @@ public class QuizAdapter extends RecyclerView.Adapter<QuizAdapter.SelectedViewHo
         public CardView cvParent;
         public TextView txtQuizQuestion;
 
-        public Button btnUpdate, btnDelete;
+        public ImageView btnUpdate, btnDelete;
 
         public SelectedViewHolder(View v){
             super(v);

@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="22">
+    <!-- Hình tròn màu #ACE1F0 -->
+    <path
+        android:fillColor="#ACE1F0"
+        android:pathData="M12,2c-4.41,0 -8,3.59 -8,8s3.59,8 8,8s8,-3.59 8,-8s-3.59,-8 -8,-8zm0,5c-0,0 -0.1,-0.0 -0,-0s0,-0 0,-0s0,0.1 0,0s-0,1 -0,0z"/>
+
+    <!-- Dấu cộng màu #003697 -->
+    <path
+        android:fillColor="#003697"
+        android:pathData="M15,11v-1h-2v-2h-1v2h-2v1h2v2h1v-2h2z"/>
+</vector>

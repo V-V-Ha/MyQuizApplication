@@ -10,21 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizForFun">
         <activity
-            android:name=".OnlineLoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".OnlineSignUp"
-            android:exported="false" />
-        <activity
-            android:name=".ChooseApplicationType"
-            android:exported="false" />
-        <activity
             android:name=".QuizActivity"
             android:exported="false" />
         <activity
@@ -36,7 +21,9 @@
         <activity
             android:name=".SelectSubjectActivity"
             android:exported="false" />
+
         <activity android:name=".FinalResultActivity" />
+
         <activity android:name=".EditPasswordActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".RegisterActivity" />
