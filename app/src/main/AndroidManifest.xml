@@ -16,9 +16,6 @@
             android:name=".QuizManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".SubjectManagementActivity"
-            android:exported="false" />
-        <activity
             android:name=".SelectSubjectActivity"
             android:exported="false" />
 
