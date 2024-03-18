@@ -64,9 +64,10 @@
     <string name="text_choose_app_vn">Choose Study Application</string>
     <string name="text_choose_quiz">Quiz Learning Application</string>
     <string name="text_choose_vocab">Vocabulary Learning Application</string>
-    <string name="signup_register_button">Have_account? <b>LOGIN NOW</b></string>
+    <string name="signup_register_button">Have account? <b>LOGIN NOW</b></string>
     <string name="confirm_password">Confirm your Password</string>
     <string name="phone_number">Enter your Phone Number</string>
+    <string name="login_register_button">Dont have account? <b>SIGN UP NOW</b></string>
 
     <string name="full_name">Enter your Fullname</string>
 

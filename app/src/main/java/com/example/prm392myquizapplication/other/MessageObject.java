@@ -1,4 +1,4 @@
-package com.example.prm392myquizapplication.data;
+package com.example.prm392myquizapplication.other;
 
 import android.app.Dialog;
 import android.content.Context;

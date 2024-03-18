@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizForFun">
         <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".OnlineLoginActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".OnlineSignUpActivity"
             android:exported="false" />
