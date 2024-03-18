@@ -11,15 +11,10 @@
         android:theme="@style/Theme.QuizForFun">
         <activity
             android:name=".OnlineLoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
-            android:name=".OnlineSignUp"
+            android:name=".OnlineSignUpActivity"
             android:exported="false" />
         <activity
             android:name=".ChooseApplicationType"

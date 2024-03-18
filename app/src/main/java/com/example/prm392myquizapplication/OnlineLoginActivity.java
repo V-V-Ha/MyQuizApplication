@@ -26,7 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 
-public class LoginActivity extends AppCompatActivity {
+public class OnlineLoginActivity extends AppCompatActivity {
 
     Button btnDangnhap;
     TextView tvDangky, tvforgotPassword;
@@ -44,127 +44,127 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_login);
 
-        instance = this;
-
-
-        AnhXa();
-        DB = DatabaseAccess.getInstance(getApplicationContext());
-        mAuth = FirebaseAuth.getInstance();
-
-        //Đăng nhập thành công chuyển sang MainActivity
-        btnDangnhap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = edttaikhoan.getText().toString().trim();
-                String matkhau = edtmatkhau.getText().toString().trim();
-
-
-                // validations for input email and password // check th trong
-                if (TextUtils.isEmpty(email)) {
-                    messageObject.ShowDialogMessage(Gravity.CENTER,
-                            LoginActivity.this,
-                            "Hãy nhập Email của bạn!!",
-                            0);
-                    return;
-                }
-
-                if (TextUtils.isEmpty(matkhau)) {
-                    messageObject.ShowDialogMessage(Gravity.CENTER,
-                            LoginActivity.this,
-                            "Hãy nhập mật khẩu của bạn!!",
-                            0);
-                    return;
-                }
-
-                // login existing user
-
-                mAuth.signInWithEmailAndPassword(email, matkhau)
-                        .addOnCompleteListener(
-                                new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(
-                                            @NonNull Task<AuthResult> task)
-                                    {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(getApplicationContext(),
-                                                            "Login Successfully",
-                                                            Toast.LENGTH_LONG)
-                                                    .show();
-
-                                            //notify
-                                            Intent intent;
-                                            intent = new Intent(LoginActivity.this, MyService.class);
-                                            startService(intent);
-
-                                            DB.iduser = mAuth.getCurrentUser().getUid();
-                                            DB.CapNhatUser(DB.iduser);
-                                            rootNode = FirebaseDatabase.getInstance();
-                                            userref = rootNode.getReference("User").child(DB.iduser);
-                                            userref.child("role").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                                                    int roleValue = Integer.parseInt(task.getResult().getValue().toString());
-
-                                                    Intent intent;
-                                                    if (roleValue == 0) {
-                                                        intent = new Intent(LoginActivity.this, AdminActivity.class);
-                                                    }
-                                                    else {
-                                                        intent = new Intent(LoginActivity.this, MainActivity.class);
-                                                    }
-
-                                                    startActivity(intent);
-
-                                                }
-                                            });
-                                        }
-                                        else {
-                                            // sign-in failed
-                                            messageObject.ShowDialogMessage(Gravity.CENTER,
-                                                    LoginActivity.this,
-                                                    "Sai Email hoặc mật khẩu!!",
-                                                    0);
-                                        }
-                                    }
-                                });
-
-
-            }
-        });
-        tvDangky.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        tvforgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-    private void AnhXa()
-    {
-        btnDangnhap=(Button) findViewById(R.id.buttonDangnhap);
-        tvDangky = (TextView) findViewById(R.id.textView_register);
-        tvforgotPassword = (TextView) findViewById(R.id.textView_forgotPassword);
-        edttaikhoan = (EditText) findViewById(R.id.editTextUser);
-        edtmatkhau = (EditText) findViewById(R.id.editTextPass);
-
-    }
-
-    public void clickStopService() {
-        Intent intent=new Intent(this,MyService.class);
-        stopService(intent);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+//        instance = this;
+//
+//
+//        AnhXa();
+//        DB = DatabaseAccess.getInstance(getApplicationContext());
+//        mAuth = FirebaseAuth.getInstance();
+//
+//        //Đăng nhập thành công chuyển sang MainActivity
+//        btnDangnhap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String email = edttaikhoan.getText().toString().trim();
+//                String matkhau = edtmatkhau.getText().toString().trim();
+//
+//
+//                // validations for input email and password // check th trong
+//                if (TextUtils.isEmpty(email)) {
+//                    messageObject.ShowDialogMessage(Gravity.CENTER,
+//                            LoginActivity.this,
+//                            "Hãy nhập Email của bạn!!",
+//                            0);
+//                    return;
+//                }
+//
+//                if (TextUtils.isEmpty(matkhau)) {
+//                    messageObject.ShowDialogMessage(Gravity.CENTER,
+//                            LoginActivity.this,
+//                            "Hãy nhập mật khẩu của bạn!!",
+//                            0);
+//                    return;
+//                }
+//
+//                // login existing user
+//
+//                mAuth.signInWithEmailAndPassword(email, matkhau)
+//                        .addOnCompleteListener(
+//                                new OnCompleteListener<AuthResult>() {
+//                                    @Override
+//                                    public void onComplete(
+//                                            @NonNull Task<AuthResult> task)
+//                                    {
+//                                        if (task.isSuccessful()) {
+//                                            Toast.makeText(getApplicationContext(),
+//                                                            "Login Successfully",
+//                                                            Toast.LENGTH_LONG)
+//                                                    .show();
+//
+//                                            //notify
+//                                            Intent intent;
+//                                            intent = new Intent(LoginActivity.this, MyService.class);
+//                                            startService(intent);
+//
+//                                            DB.iduser = mAuth.getCurrentUser().getUid();
+//                                            DB.CapNhatUser(DB.iduser);
+//                                            rootNode = FirebaseDatabase.getInstance();
+//                                            userref = rootNode.getReference("User").child(DB.iduser);
+//                                            userref.child("role").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                                                @Override
+//                                                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
+//                                                    int roleValue = Integer.parseInt(task.getResult().getValue().toString());
+//
+//                                                    Intent intent;
+//                                                    if (roleValue == 0) {
+//                                                        intent = new Intent(LoginActivity.this, AdminActivity.class);
+//                                                    }
+//                                                    else {
+//                                                        intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                                    }
+//
+//                                                    startActivity(intent);
+//
+//                                                }
+//                                            });
+//                                        }
+//                                        else {
+//                                            // sign-in failed
+//                                            messageObject.ShowDialogMessage(Gravity.CENTER,
+//                                                    LoginActivity.this,
+//                                                    "Sai Email hoặc mật khẩu!!",
+//                                                    0);
+//                                        }
+//                                    }
+//                                });
+//
+//
+//            }
+//        });
+//        tvDangky.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        tvforgotPassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(LoginActivity.this,ForgotPasswordActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
+//    private void AnhXa()
+//    {
+//        btnDangnhap=(Button) findViewById(R.id.buttonDangnhap);
+//        tvDangky = (TextView) findViewById(R.id.textView_register);
+//        tvforgotPassword = (TextView) findViewById(R.id.textView_forgotPassword);
+//        edttaikhoan = (EditText) findViewById(R.id.editTextUser);
+//        edtmatkhau = (EditText) findViewById(R.id.editTextPass);
+//
+//    }
+//
+//    public void clickStopService() {
+//        Intent intent=new Intent(this,MyService.class);
+//        stopService(intent);
+//    }
+//
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
     }
 }
