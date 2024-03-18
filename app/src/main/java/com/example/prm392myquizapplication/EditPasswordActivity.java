@@ -24,9 +24,9 @@ public class EditPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_password);
 
-        etOldPassword = findViewById(R.id.tvEmail);
-        etNewPassword = findViewById(R.id.tvNewPass);
-        etConfirmNewPassword = findViewById(R.id.tvConfirmNewPass);
+        etOldPassword = findViewById(R.id.tietPassword);
+        etNewPassword = findViewById(R.id.tietPasswordNewPass);
+        etConfirmNewPassword = findViewById(R.id.tietPasswordConfirmNewPass);
         Button btnSavePassword = findViewById(R.id.btnChangePassword);
 
         findViewById(R.id.imageViewEditPassword).setOnClickListener(new View.OnClickListener() {

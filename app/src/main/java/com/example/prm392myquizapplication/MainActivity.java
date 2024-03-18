@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
         homeBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId() == R.id.home_quiz) {
-                    homeViewPager.setCurrentItem(0);
-                    return true;
-                } else if (item.getItemId() == R.id.home_user) {
-                    homeViewPager.setCurrentItem(1);
-                    return true;
+                switch (item.getItemId()) {
+                    case R.id.home_quiz:
+                        homeViewPager.setCurrentItem(0);
+                        return true;
+                    case R.id.home_user:
+                        homeViewPager.setCurrentItem(1);
+                        return true;
+
                 }
                 return true;
             }

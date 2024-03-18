@@ -13,6 +13,7 @@
     </style>
 
     <style name="splashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_image</item>
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
@@ -86,8 +87,5 @@
         <item name="buttonTint">@color/peach</item>
     </style>
 
-    <style name="text_heading2">
-        <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
+
 </resources>

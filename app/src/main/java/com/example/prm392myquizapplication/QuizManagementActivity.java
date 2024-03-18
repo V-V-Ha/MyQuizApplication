@@ -28,6 +28,7 @@ import java.util.List;
 
 public class QuizManagementActivity extends AppCompatActivity {
 
+    private Button btnAdd;
     private RecyclerView rvQuizzes;
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -35,13 +36,13 @@ public class QuizManagementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_management);
 
-        //btnAdd = findViewById(R.id.btn_add_quiz);
+        btnAdd = findViewById(R.id.btn_add_quiz);
         rvQuizzes = findViewById(R.id.rv_quiz_list);
 
         findViewById(R.id.imageViewQuiz).setOnClickListener(view -> finish());
 
 
-        findViewById(R.id.btn_add_quiz).setOnClickListener(view -> {
+        btnAdd.setOnClickListener(view -> {
             //Add quiz
             AlertDialog.Builder builder = new AlertDialog.Builder(QuizManagementActivity.this);
             builder.setTitle("Add Quiz");
@@ -94,21 +95,22 @@ public class QuizManagementActivity extends AppCompatActivity {
                     // Thêm Quiz vào Database
 
                     // Code để thêm Quiz vào Database
-                    final String correctAnswer;
-                    int checkedRadioButtonId = correctInput.getCheckedRadioButtonId();
-
-                    if (checkedRadioButtonId == R.id.radio_answer1) {
-                        correctAnswer = answer1Input.getText().toString();
-                    } else if (checkedRadioButtonId == R.id.radio_answer2) {
-                        correctAnswer = answer2Input.getText().toString();
-                    } else if (checkedRadioButtonId == R.id.radio_answer3) {
-                        correctAnswer = answer3Input.getText().toString();
-                    } else if (checkedRadioButtonId == R.id.radio_answer4) {
-                        correctAnswer = answer4Input.getText().toString();
-                    } else {
-                        correctAnswer = "";
-                    }
-
+                    String correctAnswer = "";
+//                    switch (correctInput.getCheckedRadioButtonId()){
+//                        case R.id.radio_answer1:
+//                            correctAnswer = answer1Input.getText().toString();
+//                            break;
+//                        case R.id.radio_answer2:
+//                            correctAnswer = answer2Input.getText().toString();
+//                            break;
+//                        case R.id.radio_answer3:
+//                            correctAnswer = answer3Input.getText().toString();
+//                            break;
+//                        case R.id.radio_answer4:
+//                            correctAnswer = answer4Input.getText().toString();
+//                            break;
+//
+//                    }
                     Quiz quiz = new Quiz(
                             questionInput.getText().toString(),
                             answer1Input.getText().toString(),
@@ -260,27 +262,29 @@ public class QuizManagementActivity extends AppCompatActivity {
 
                             // Update Quiz vào Database
 
-                            final String correctAnswer;
-                            int checkedRadioButtonId = correctInput.getCheckedRadioButtonId();
-
-                            if (checkedRadioButtonId == R.id.radio_answer1) {
-                                correctAnswer = answer1Input.getText().toString();
-                            } else if (checkedRadioButtonId == R.id.radio_answer2) {
-                                correctAnswer = answer2Input.getText().toString();
-                            } else if (checkedRadioButtonId == R.id.radio_answer3) {
-                                correctAnswer = answer3Input.getText().toString();
-                            } else if (checkedRadioButtonId == R.id.radio_answer4) {
-                                correctAnswer = answer4Input.getText().toString();
-                            } else {
-                                correctAnswer = "";
-                            }
-                            quiz.setQuestion(questionInput.getText().toString());
-                            quiz.setAnswer1(answer1Input.getText().toString());
-                            quiz.setAnswer2(answer2Input.getText().toString());
-                            quiz.setAnswer3(answer3Input.getText().toString());
-                            quiz.setAnswer4(answer4Input.getText().toString());
-                            quiz.setCorrectAnswer(correctAnswer);
-                            quiz.setSubjectID((int) subjectInput.getSelectedItemId());
+//                            String correctAnswer = "";
+//                            switch (correctInput.getCheckedRadioButtonId()){
+//                                case R.id.radio_answer1:
+//                                    correctAnswer = answer1Input.getText().toString();
+//                                    break;
+//                                case R.id.radio_answer2:
+//                                    correctAnswer = answer2Input.getText().toString();
+//                                    break;
+//                                case R.id.radio_answer3:
+//                                    correctAnswer = answer3Input.getText().toString();
+//                                    break;
+//                                case R.id.radio_answer4:
+//                                    correctAnswer = answer4Input.getText().toString();
+//                                    break;
+//
+////                            }
+//                            quiz.setQuestion(questionInput.getText().toString());
+//                            quiz.setAnswer1(answer1Input.getText().toString());
+//                            quiz.setAnswer2(answer2Input.getText().toString());
+//                            quiz.setAnswer3(answer3Input.getText().toString());
+//                            quiz.setAnswer4(answer4Input.getText().toString());
+//                            quiz.setCorrectAnswer(correctAnswer);
+//                            quiz.setSubjectID((int) subjectInput.getSelectedItemId());
 
                             new AsyncTask<Void, Void, Void>() {
                                 @Override

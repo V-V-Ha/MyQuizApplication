@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,16 +23,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
 
     public interface OnUpdateClickListener {
         void onUpdateClick(Subject subject);
-    }
-
-    public interface OnSubjectClickListener {
-        void onSubjectClick(Subject subject);
-    }
-
-    private OnSubjectClickListener subjectClickListener;
-
-    public void setOnSubjectClickListener(OnSubjectClickListener listener) {
-        this.subjectClickListener = listener;
     }
     private OnUpdateClickListener onUpdateClickListener;
 
@@ -98,15 +87,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (subjectClickListener != null) {
-                    subjectClickListener.onSubjectClick(subject);
-                }
-            }
-        });
-
     }
 
     @Override
@@ -119,7 +99,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
         public CardView cvParent;
         public TextView txtSubject;
 
-        public ImageView btnUpdate, btnDelete, btnAdd;
+        public Button btnUpdate, btnDelete;
 
         public SelectedViewHolder(View v){
             super(v);
@@ -127,7 +107,6 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
             txtSubject = v.findViewById(R.id.tv_subject_name);
             btnUpdate = v.findViewById(R.id.btn_update_subject);
             btnDelete = v.findViewById(R.id.btn_delete_subject);
-
         }
     }
 }
