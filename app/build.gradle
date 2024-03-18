@@ -43,10 +43,17 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
+    //SQL Lite
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+
     // Gson
     implementation 'com.google.code.gson:gson:2.8.6'
-
-    //View Pager Dots Indicator
-    //https://github.com/tommybuonomo/dotsindicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+
 }
