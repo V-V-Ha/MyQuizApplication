@@ -2,6 +2,7 @@ package com.example.prm392myquizapplication;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392myquizapplication.adapter.QuizAdapter;
@@ -29,16 +31,24 @@ import java.util.List;
 public class QuizManagementActivity extends AppCompatActivity {
 
     private RecyclerView rvQuizzes;
+    private RecyclerView selectSubject;
+
     @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_management);
-
+        Button cvStartQuiz = findViewById(R.id.btn_take_quiz);
         //btnAdd = findViewById(R.id.btn_add_quiz);
         rvQuizzes = findViewById(R.id.rv_quiz_list);
 
         findViewById(R.id.imageViewQuiz).setOnClickListener(view -> finish());
+        cvStartQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QuizManagementActivity.this, SelectSubjectActivity.class));
+            }
+        });
 
 
         findViewById(R.id.btn_add_quiz).setOnClickListener(view -> {
@@ -69,6 +79,7 @@ public class QuizManagementActivity extends AppCompatActivity {
                 protected void onPostExecute(List<Subject> subjects) {
                     SubjectListAdapter subjectAdapter = new SubjectListAdapter(QuizManagementActivity.this, subjects);
                     subjectInput.setAdapter(subjectAdapter);
+
                 }
             }.execute();
             // Thiết lập nút Add

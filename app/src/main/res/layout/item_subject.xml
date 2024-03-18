@@ -22,6 +22,7 @@
             android:id="@+id/tv_subject_name"
             style="@style/text_heading"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
             android:layout_height="50dp"
             android:gravity="center_vertical"
             android:layout_marginStart="16dp"

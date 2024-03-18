@@ -26,7 +26,8 @@
         style="@style/titleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="11dp"
+        android:fontFamily="@font/chakrapetchbold"
         android:text="@string/quiz_management"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewQuiz"
         app:layout_constraintStart_toEndOf="@+id/imageViewQuiz"
@@ -50,6 +51,20 @@
         tools:itemCount="6"
         tools:listitem="@layout/item_quiz" />
 
+    <Button
+        android:id="@+id/btn_take_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chakrapetchbold"
+        android:text="Take Quiz"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_background"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
     <ImageView
         android:id="@+id/btn_add_quiz"
         android:layout_width="70dp"
@@ -60,6 +75,7 @@
         android:padding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
         app:srcCompat="@drawable/btn_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

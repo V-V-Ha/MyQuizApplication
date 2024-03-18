@@ -24,6 +24,7 @@
             android:layout_width="260dp"
             android:layout_height="50dp"
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/chakrapetchbold"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:singleLine="true"

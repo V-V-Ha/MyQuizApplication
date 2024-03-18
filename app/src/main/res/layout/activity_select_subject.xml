@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/blue_backgound"
     android:layout_height="match_parent"
     tools:context=".SelectSubjectActivity">
 
@@ -14,25 +15,31 @@
         android:layout_marginTop="24dp"
         android:background="?selectableItemBackgroundBorderless"
         android:padding="4dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow"
         app:tint="@color/black" />
+
 
     <TextView
         android:id="@+id/textView"
         style="@style/titleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="56dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chakrapetchbold"
         android:text="@string/quiz_option"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewSelectQuiz"
         app:layout_constraintStart_toEndOf="@+id/imageViewSelectQuiz"
-        app:layout_constraintTop_toTopOf="@+id/imageViewSelectQuiz" />
+        app:layout_constraintTop_toTopOf="@+id/imageViewSelectQuiz"
+        app:layout_constraintVertical_bias="0.413" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_selected_subject"
         android:layout_width="0dp"
+        android:fontFamily="@font/chakrapetchbold"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:clipToPadding="false"

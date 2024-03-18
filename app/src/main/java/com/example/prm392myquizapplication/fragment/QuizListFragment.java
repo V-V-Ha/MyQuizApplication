@@ -2,6 +2,7 @@ package com.example.prm392myquizapplication.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392myquizapplication.QuizManagementActivity;
 import com.example.prm392myquizapplication.R;
 import com.example.prm392myquizapplication.adapter.SubjectAdapter;
 import com.example.prm392myquizapplication.data.Subject;
@@ -252,6 +254,16 @@ public class QuizListFragment extends Fragment {
                             .show();
                 }
 
+            });
+
+            adapter.setOnSubjectClickListener(new SubjectAdapter.OnSubjectClickListener() {
+                @Override
+                public void onSubjectClick(Subject subject) {
+                    // Chuyển sang QuizManagementActivity với thông tin về subject
+                    Intent intent = new Intent(requireContext(), QuizManagementActivity.class);
+                    intent.putExtra("subject_id", subject.getSubjectID()); // Chuyển thông tin subject qua intent nếu cần
+                    startActivity(intent);
+                }
             });
 
             rvSelectedSubject.setAdapter(adapter);
