@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class SelectSubjectActivity extends AppCompatActivity {
 
     private RecyclerView rvSelectedSubject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,6 @@ public class SelectSubjectActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         new GetAllSelectedSubjectTask().execute();

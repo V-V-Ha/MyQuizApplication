@@ -261,7 +261,9 @@ public class QuizListFragment extends Fragment {
                 public void onSubjectClick(Subject subject) {
                     // Chuyển sang QuizManagementActivity với thông tin về subject
                     Intent intent = new Intent(requireContext(), QuizManagementActivity.class);
+
                     intent.putExtra("subject_id", subject.getSubjectID()); // Chuyển thông tin subject qua intent nếu cần
+                    intent.putExtra("subject_name", subject.getSubjectName()); // Chuyển thông tin subject qua intent nếu cần
                     startActivity(intent);
                 }
             });

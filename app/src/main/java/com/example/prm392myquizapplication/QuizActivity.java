@@ -48,6 +48,7 @@ public class QuizActivity extends AppCompatActivity {
         currentQuiz = 0;
         correct = 0;
         Intent intent = getIntent();
+
         if (intent != null) {
             subject = (Subject) intent.getParcelableExtra(Constants.SUBJECT);
             findViewById(R.id.imageViewStartQuiz).setOnClickListener(view -> finish());

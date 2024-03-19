@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -33,7 +34,8 @@ public class QuizManagementActivity extends AppCompatActivity {
     private RecyclerView rvQuizzes;
     private RecyclerView selectSubject;
 
-    @SuppressLint("StaticFieldLeak")
+
+    @SuppressLint({"StaticFieldLeak","MissingInflatedId", "LocalSuppress"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,8 @@ public class QuizManagementActivity extends AppCompatActivity {
         Button cvStartQuiz = findViewById(R.id.btn_take_quiz);
         //btnAdd = findViewById(R.id.btn_add_quiz);
         rvQuizzes = findViewById(R.id.rv_quiz_list);
-
+         TextView tv = findViewById(R.id.tv_quiz_name);
+        tv.setText(getIntent().getStringExtra("subject_name"));
         findViewById(R.id.imageViewQuiz).setOnClickListener(view -> finish());
         cvStartQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,7 +169,7 @@ public class QuizManagementActivity extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    class GetAllSelectedQuizTask extends AsyncTask<Void, Void, Void>{
+    class GetAllSelectedQuizTask extends AsyncTask<Void, Void, Void> {
         List<Quiz> quizzes = new ArrayList<>();
 
         public GetAllSelectedQuizTask() {
@@ -211,15 +214,13 @@ public class QuizManagementActivity extends AppCompatActivity {
                     answer4Input.setText(quiz.getAnswer4());
 
                     final RadioGroup correctInput = dialogView.findViewById(R.id.radio_group);
-                    if(quiz.getCorrectAnswer().equals(quiz.getAnswer1())){
+                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer1())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer1);
                         radioButton.setChecked(true);
-                    }else
-                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer2())){
+                    } else if (quiz.getCorrectAnswer().equals(quiz.getAnswer2())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer2);
                         radioButton.setChecked(true);
-                    }else
-                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer3())){
+                    } else if (quiz.getCorrectAnswer().equals(quiz.getAnswer3())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer3);
                         radioButton.setChecked(true);
                     } else {

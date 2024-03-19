@@ -103,6 +103,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
             public void onClick(View v) {
                 if (subjectClickListener != null) {
                     subjectClickListener.onSubjectClick(subject);
+
                 }
             }
         });
