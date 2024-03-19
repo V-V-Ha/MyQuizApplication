@@ -151,7 +151,7 @@ public class QuizListFragment extends Fragment {
         public GetAllSelectedSubjectTask() {
         }
 
-
+        //Thuc hien viec lay toan bo subject duoi nen
         @Override
         protected Void doInBackground(Void... voids) {
             UserDatabase databaseClient = UserDatabaseClient.getInstance(requireContext());
@@ -176,7 +176,7 @@ public class QuizListFragment extends Fragment {
                     input.setText(subject.getSubjectName());
                     builder.setView(input);
 
-                    // Thiết lập nút Update
+                     // Xử lý sự kiện khi nhấn nút Update
                     builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -188,19 +188,20 @@ public class QuizListFragment extends Fragment {
                                     @Override
                                     protected Void doInBackground(Void... voids) {
                                         try {
+                                            //Thuc hien update subjetc duoi nen
                                             UserDatabaseClient.getInstance(requireContext()).subjectDao().updateSubject(subject);
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject successfully!!!", Toast.LENGTH_SHORT).show());
-                                        } catch (Exception ex) {
+
+                                        } catch (Exception ex) { //Neu xay ra loi trong viec xu ly DB
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject failed!!!", Toast.LENGTH_SHORT).show());
                                         }
-
                                         return null;
                                     }
 
                                     @Override
                                     protected void onPostExecute(Void aVoid) {
                                         super.onPostExecute(aVoid);
-                                        // Cập nhật RecyclerView sau khi cập nhật Subject
+                                        // Cập nhật RecyclerView sau khi cập nhật Subject: Khoi chay lai GetAllSelectedSubjectTask
                                         new GetAllSelectedSubjectTask().execute();
                                     }
                                 }.execute();
@@ -212,6 +213,7 @@ public class QuizListFragment extends Fragment {
                     builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            //Khi click vao Cancel thi an dialog
                             dialog.cancel();
                         }
                     });
@@ -220,6 +222,7 @@ public class QuizListFragment extends Fragment {
                     builder.show();
                 }
             });
+            //Thiet lap on click cho moi adapter
             adapter.setOnDeleteClickListener(new SubjectAdapter.OnDeleteClickListener() {
                 @Override
                 public void onDeleteClick(Subject subject) {
@@ -259,15 +262,15 @@ public class QuizListFragment extends Fragment {
             adapter.setOnSubjectClickListener(new SubjectAdapter.OnSubjectClickListener() {
                 @Override
                 public void onSubjectClick(Subject subject) {
-                    // Chuyển sang QuizManagementActivity với thông tin về subject
+                    // Tao 1 intent tu this context sang QuizManagementActivity
                     Intent intent = new Intent(requireContext(), QuizManagementActivity.class);
-
-                    intent.putExtra("subject_id", subject.getSubjectID()); // Chuyển thông tin subject qua intent nếu cần
-                    intent.putExtra("subject_name", subject.getSubjectName()); // Chuyển thông tin subject qua intent nếu cần
+                    //Thiet lap du lieu cho Intent
+                    intent.putExtra("subject_id", subject.getSubjectID());
+                    intent.putExtra("subject_name", subject.getSubjectName());
+                    //Khoi chay Intent
                     startActivity(intent);
                 }
             });
-
             rvSelectedSubject.setAdapter(adapter);
         }
     }
