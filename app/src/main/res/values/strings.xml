@@ -87,4 +87,18 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="privacy_policy_content">
+
+    This Privacy Policy governs the manner in which our Vocab Application collects, uses, maintains, and discloses information collected from users (each, a "User") of the Vocab Application.
+    Personal identification information
+    We may collect personal identification information from Users in a variety of ways, including, but not limited to, when Users visit our app, register on the app, fill out a form, and in connection with other activities, services, features, or resources we make available on our app.
+     Non-personal identification information may include the browser name, the type of device, and technical information about Users\' means of connection to our app, such as the operating system and the Internet service providers utilized and other similar information.
+
+    Our Vocab Application has the discretion to update this privacy policy at any time. When we do, we will revise the updated date at the bottom of this page. We encourage Users to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect.
+    By using this app, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our app. Your continued use of the app following the posting of changes to this policy will be deemed your acceptance of those changes.
+    This document was last updated on October 27, 2023.
+    </string>
+
+
 </resources>
