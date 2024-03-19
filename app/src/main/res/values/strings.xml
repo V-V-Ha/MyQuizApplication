@@ -7,6 +7,8 @@
     <string name="login_to_continue">Login to continue</string>
 
     <string name="username_cannot_empty">Username cannot be empty</string>
+    <string name="username_already_exists">Username already exists</string>
+    <string name="password_too_short">Password needs to be greater than 6 characters</string>
     <string name="password_cannot_empty">Password cannot be empty</string>
     <string name="old_password_cannot_be_empty">Old Password cannot be empty</string>
     <string name="new_password_cannot_be_empty">New Password cannot be empty</string>
