@@ -34,6 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageViewFinalResultQuiz"
         app:layout_constraintHorizontal_bias="0.3" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineCenter"
         android:layout_width="wrap_content"
@@ -43,41 +44,27 @@
 
     <ImageView
         android:id="@+id/imageViewBelowFinalResult"
-        android:layout_width="259dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="339dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="52dp"
         android:src="@drawable/cup"
         app:layout_constraintEnd_toEndOf="@id/textView"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.591"
         app:layout_constraintStart_toStartOf="@id/textView"
         app:layout_constraintTop_toBottomOf="@id/textView" />
-
-    <TextView
-        android:id="@+id/tvWellDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="108dp"
-        android:fontFamily="@font/chakrapetchbold"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageViewFinalResultQuiz"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:text="Well Done, kevin0078" />
 
     <TextView
         android:id="@+id/textView10"
         style="@style/text_heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/chakrapetchbold"
         android:text="@string/subject"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/tvWellDone"
-        app:layout_constraintTop_toBottomOf="@+id/tvWellDone" />
+        app:layout_constraintStart_toStartOf="@+id/imageViewBelowFinalResult"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewBelowFinalResult" />
 
     <TextView
         android:id="@+id/textView11"
@@ -128,18 +115,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:textColor="@color/black"
-        android:fontFamily="@font/chakrapetchbold"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/date"
-        style="@style/text_heading"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -157,7 +132,7 @@
         android:layout_width="0dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="56dp"
         android:fontFamily="@font/chakrapetchbold"
         android:imeOptions="actionDone"
         android:singleLine="true"
@@ -211,17 +186,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/textView28"
         app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView30"
-        style="@style/text_value_heading"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/chakrapetchbold"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView29"
-        app:layout_constraintTop_toTopOf="@+id/textView15"
-        tools:text="27 Oct 2020 09:15 AM" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
