@@ -29,9 +29,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ImageView btnBack = findViewById(R.id.imageView);
-        EditText etUsername = findViewById(R.id.tietUsername);
-        EditText etEmail = findViewById(R.id.tietPassword);
-        EditText etPassword = findViewById(R.id.tiePassword);
+        EditText etUsername = findViewById(R.id.tvUsername);
+        EditText etEmail = findViewById(R.id.tvEmail);
+        EditText etPassword = findViewById(R.id.tvPassword);
         Button btnRegister = findViewById(R.id.btnRegister);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -57,30 +57,37 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private boolean validateInputs(String username,String email,String password){
-
-        if (username.isEmpty()){
+    private boolean validateInputs(String username, String email, String password) {
+        if (username.isEmpty()) {
             Toast.makeText(this, getString(R.string.username_cannot_empty), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             Toast.makeText(this, getString(R.string.email_cannot_empty), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (!isValidEmail(email)){
+        if (!isValidEmail(email)) {
             Toast.makeText(this, getString(R.string.email_not_valid), Toast.LENGTH_SHORT).show();
             return false;
         }
 
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             Toast.makeText(this, getString(R.string.password_cannot_empty), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        if (password.length() < 6) {
+            Toast.makeText(this, getString(R.string.password_too_short), Toast.LENGTH_SHORT).show();
             return false;
         }
 
         return true;
     }
+
+
 
     class RegisterUserTask extends AsyncTask<Void, Void, Void> {
 
@@ -127,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }else{
-                Toast.makeText(RegisterActivity.this, "This email is already using by someone else", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "This email is exist", Toast.LENGTH_SHORT).show();
             }
 
         }
