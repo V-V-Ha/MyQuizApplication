@@ -188,9 +188,11 @@ public class QuizListFragment extends Fragment {
                                     @Override
                                     protected Void doInBackground(Void... voids) {
                                         try {
+                                            //THực hiện update trong DB
                                             UserDatabaseClient.getInstance(requireContext()).subjectDao().updateSubject(subject);
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject successfully!!!", Toast.LENGTH_SHORT).show());
                                         } catch (Exception ex) {
+                                            //Báo lỗi nếu xử lý DB không thành công
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject failed!!!", Toast.LENGTH_SHORT).show());
                                         }
 
@@ -200,7 +202,7 @@ public class QuizListFragment extends Fragment {
                                     @Override
                                     protected void onPostExecute(Void aVoid) {
                                         super.onPostExecute(aVoid);
-                                        // Cập nhật RecyclerView sau khi cập nhật Subject
+                                        // Load lại GetAllSelectedSubjectTask class
                                         new GetAllSelectedSubjectTask().execute();
                                     }
                                 }.execute();
@@ -259,11 +261,12 @@ public class QuizListFragment extends Fragment {
             adapter.setOnSubjectClickListener(new SubjectAdapter.OnSubjectClickListener() {
                 @Override
                 public void onSubjectClick(Subject subject) {
-                    // Chuyển sang QuizManagementActivity với thông tin về subject
+                    // Tạo 1 intent
                     Intent intent = new Intent(requireContext(), QuizManagementActivity.class);
-
-                    intent.putExtra("subject_id", subject.getSubjectID()); // Chuyển thông tin subject qua intent nếu cần
-                    intent.putExtra("subject_name", subject.getSubjectName()); // Chuyển thông tin subject qua intent nếu cần
+                    //Put dữ liệu vào intent
+                    intent.putExtra("subject_id", subject.getSubjectID());
+                    intent.putExtra("subject_name", subject.getSubjectName());
+                    //Khởi chạy intent khi click
                     startActivity(intent);
                 }
             });
