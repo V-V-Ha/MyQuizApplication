@@ -60,7 +60,7 @@ public class SelectSubjectActivity extends AppCompatActivity {
             SelectedSubjectAdapter adapter = new SelectedSubjectAdapter(subjects, databaseClient.subjectDao());
 
             adapter.setOnClickListener(subject -> {
-                Intent intent = new Intent(SelectSubjectActivity.this, QuizActivity.class);
+                Intent intent = new Intent(SelectSubjectActivity.this, QuizListActivity.class);
                 intent.putExtra(Constants.SUBJECT, subject);
                 startActivity(intent);
                 finish();

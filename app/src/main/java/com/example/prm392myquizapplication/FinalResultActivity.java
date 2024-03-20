@@ -36,7 +36,7 @@ public class FinalResultActivity extends AppCompatActivity {
             SharedPref sharedPref = SharedPref.getInstance();
             User user = sharedPref.getUser(this);
             Date date = new Date();
-            Subject subject = (Subject)intent.getParcelableExtra(Constants.SUBJECT);
+            Subject subject = intent.getParcelableExtra(Constants.SUBJECT);
             int correct = intent.getIntExtra(Constants.CORRECT, 0);
             int incorrect = intent.getIntExtra(Constants.INCORRECT, 0);
             Attempt result = new Attempt(
@@ -71,7 +71,7 @@ public class FinalResultActivity extends AppCompatActivity {
             tvDate.setText(date.toString());
 
             btnAgain.setOnClickListener(view -> {
-                Intent intent1 = new Intent(this, QuizActivity.class);
+                Intent intent1 = new Intent(this, QuizListActivity.class);
                 intent1.putExtra(Constants.SUBJECT, subject);
                 startActivity(intent1);
                 finish();

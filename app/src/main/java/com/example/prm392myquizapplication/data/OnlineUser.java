@@ -3,7 +3,6 @@ package com.example.prm392myquizapplication.data;
 public class OnlineUser {
     private String iduser;
     private String HoTen;
-    private int Point;
     private String Email;
     private String SDT;
 
@@ -11,10 +10,9 @@ public class OnlineUser {
         //Nhận data từ Firebase
     }
 
-    public OnlineUser(String iduser, String hoTen, int point, String email, String SDT, int role) {
+    public OnlineUser(String iduser, String hoTen, String email, String SDT) {
         this.iduser = iduser;
         HoTen = hoTen;
-        Point = point;
         Email = email;
         this.SDT = SDT;
     }
@@ -35,13 +33,6 @@ public class OnlineUser {
         HoTen = hoTen;
     }
 
-    public int getPoint() {
-        return Point;
-    }
-
-    public void setPoint(int point) {
-        Point = point;
-    }
 
     public String getEmail() {
         return Email;

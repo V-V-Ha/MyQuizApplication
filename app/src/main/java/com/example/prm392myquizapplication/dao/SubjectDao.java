@@ -24,13 +24,13 @@ public interface SubjectDao {
     void updateSubject(Subject subject);
 
     @Delete
-    public void deleteSubject(Subject subject);
+    void deleteSubject(Subject subject);
 
     @Transaction
     @Query("SELECT * FROM subject")
-    public List<Subject> getAllSubjects();
+    List<Subject> getAllSubjects();
 
     @Transaction
     @Query("SELECT COUNT(*) FROM quiz WHERE SubjectID = :SubjectID")
-    public int countQuizBySubject(int SubjectID);
+    int countQuizBySubject(int SubjectID);
 }

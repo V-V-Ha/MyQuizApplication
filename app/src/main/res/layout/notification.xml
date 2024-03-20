@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/bungee"
-        android:text="Bạn phải nhập đầy đủ thông tin"
+        android:text="Please Input Enough Information"
         android:textColor="@color/colorPrimary"
         android:textFontWeight="400"
         android:textSize="25dp"

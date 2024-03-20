@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class OnlineSignUpActivity extends AppCompatActivity {
+public class    OnlineSignUpActivity extends AppCompatActivity {
 
     TextView tvDangNhap;
     EditText edtHoTen,edtEmail,edtSdt,edtMatKhau,edtXacNhan;
@@ -33,25 +33,25 @@ public class OnlineSignUpActivity extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     DatabaseAccess DB;
-    private MessageObject messageObject = MessageObject.getInstance();
+    private final MessageObject messageObject = MessageObject.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_online_sign_up);
 
-        tvDangNhap = (TextView) findViewById(R.id.textView_login);
-        edtHoTen = (EditText) findViewById(R.id.editTextEmailNav);
-        edtEmail = (EditText) findViewById(R.id.editTextEmail);
-        edtSdt = (EditText) findViewById(R.id.editTextSdt);
-        edtMatKhau= (EditText) findViewById(R.id.editTextMatKhau);
-        edtXacNhan = (EditText) findViewById(R.id.editTextXacNhan);
-        btnSignUp = (Button) findViewById(R.id.buttonSignUp);
+        tvDangNhap = findViewById(R.id.textView_login);
+        edtHoTen = findViewById(R.id.editTextEmailNav);
+        edtEmail = findViewById(R.id.editTextEmail);
+        edtSdt = findViewById(R.id.editTextSdt);
+        edtMatKhau= findViewById(R.id.editTextMatKhau);
+        edtXacNhan = findViewById(R.id.editTextXacNhan);
+        btnSignUp = findViewById(R.id.buttonSignUp);
 
         mAuth = FirebaseAuth.getInstance();
 
         DB =  DatabaseAccess.getInstance(getApplicationContext());
-        tvDangNhap = (TextView) findViewById(R.id.textView_login);
+        tvDangNhap = findViewById(R.id.textView_login);
         tvDangNhap.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -80,7 +80,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                     if(matkhau.equals(xacnhanmatkhau)){
 
                         Boolean kiemtrataikhoan = DB.checktaikhoan(email);
-                        if(kiemtrataikhoan == false)
+                        if(!kiemtrataikhoan)
                         {
                             mAuth.createUserWithEmailAndPassword(email, matkhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 
@@ -89,7 +89,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                                 {
                                     if (task.isSuccessful()) {
                                         DB.open();
-                                        Boolean insert = DB.insertData(mAuth.getCurrentUser().getUid(),hoten,email,sdt,0, 1);
+                                        Boolean insert = DB.insertData(mAuth.getCurrentUser().getUid().toString(),hoten,email,sdt);
                                         DB.close();
                                         btnSignUp.setText(insert.toString());
                                         Toast.makeText(OnlineSignUpActivity.this, "Sign up successfully", Toast.LENGTH_SHORT).show();
@@ -97,7 +97,7 @@ public class OnlineSignUpActivity extends AppCompatActivity {
                                         // if the user created intent to login activity
                                         rootNode= FirebaseDatabase.getInstance();
                                         reference= rootNode.getReference("User");
-                                        OnlineUser newuser = new OnlineUser(mAuth.getCurrentUser().getUid(), hoten,0,email,sdt, 1);
+                                        OnlineUser newuser = new OnlineUser(mAuth.getCurrentUser().getUid(), hoten,email,sdt);
                                         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(newuser);
 
                                         Intent intent = new Intent(getApplicationContext(),OnlineLoginActivity.class);

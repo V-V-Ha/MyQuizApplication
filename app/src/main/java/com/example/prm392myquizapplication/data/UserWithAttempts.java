@@ -9,13 +9,13 @@ import androidx.room.Relation;
 public class UserWithAttempts implements Parcelable {
 
     @Embedded
-    private User user;
+    private final User user;
     @Relation(
             parentColumn = "email",
             entityColumn = "email",
             entity = Attempt.class
     )
-    private Attempt attempt;
+    private final Attempt attempt;
 
     public UserWithAttempts(User user, Attempt attempt) {
         this.user = user;

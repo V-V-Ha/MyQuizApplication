@@ -8,12 +8,12 @@ import androidx.room.Relation;
 
 public class QuizWithSubject implements Parcelable {
     @Embedded
-    private Quiz quiz;
+    private final Quiz quiz;
     @Relation(
             parentColumn = "SubjectID",
             entityColumn = "SubjectID"
     )
-    private Subject subject;
+    private final Subject subject;
 
     public QuizWithSubject(Quiz quiz, Subject subject) {
         this.quiz = quiz;

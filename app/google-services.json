@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "314178658097",
+    "firebase_url": "https://vemo-8f904-default-rtdb.firebaseio.com",
+    "project_id": "vemo-8f904",
+    "storage_bucket": "vemo-8f904.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314178658097:android:700f75fdeebe8fa90ada10",
+        "android_client_info": {
+          "package_name": "com.example.prm392myquizapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM5O4ll8LSSUbjoxU7GBN9ksX_FWKlBwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

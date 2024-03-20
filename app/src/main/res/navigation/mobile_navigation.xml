@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.prm392myquizapplication.fragment.HomeFragment"
+        android:label="HOME"
+        tools:layout="@layout/fragment_home" />
+
+
+    <activity
+        android:id="@+id/vocab_learning"
+        android:label="Learn vocabulary"
+        android:name="com.example.prm392myquizapplication.StudyVocabularyActivity"
+        tools:layout="@layout/activity_learn_vocabulary"
+        />
+    <activity
+        android:id="@+id/add_vocab"
+        android:label="Add vocabulary"
+        android:name="com.example.prm392myquizapplication.ManageVocabularySetActivity"
+        tools:layout="@layout/activity_manage_vocabulary_set"
+        />
+    <activity
+        android:id="@+id/fill_blank"
+        android:label="Fill Blank"
+        android:name="com.example.prm392myquizapplication.BlankSentenceActivity"
+        tools:layout="@layout/activity_blank_sentence"
+        />
+
+    <activity
+        android:id="@+id/add_fill_black"
+        android:label="Add Blank List"
+        android:name="com.example.prm392myquizapplication.ManageBlankSentenceActivity"
+        tools:layout="@layout/activity_admin_blanksentenceset"
+        />
+    <activity
+        android:id="@+id/quiz_game"
+        android:label="Quiz Play"
+        android:name="com.example.prm392myquizapplication.VemoQuizActivity"
+        tools:layout="@layout/activity_quiz_list_fix"
+        ></activity>
+    <activity
+        android:id="@+id/quiz_add"
+        android:label="Add Quiz"
+        android:name="com.example.prm392myquizapplication.ManaVemoQuizSetActivity"
+        tools:layout="@layout/activity_admin_vemo_quiz_set"
+        ></activity>
+    <activity
+        android:id="@+id/study_set"
+        android:label="Study Set"
+        android:name="com.example.prm392myquizapplication.ManageStudySetActivity"
+        tools:layout="@layout/activity_manage_study_set"
+        ></activity>
+
+    <activity
+        android:id="@+id/account_infor"
+        android:label="Account Information"
+        android:name="com.example.prm392myquizapplication.AccountInformationActivity"
+        tools:layout="@layout/activity_account_information"
+        ></activity>
+
+    <fragment
+        android:id="@+id/logout"
+        android:name="com.example.prm392myquizapplication.fragment.LogoutFragment"
+        tools:layout="@layout/fragment_logout"></fragment>
+</navigation>

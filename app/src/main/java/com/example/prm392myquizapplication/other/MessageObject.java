@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.example.prm392myquizapplication.R;
 
 public class MessageObject {
-    private static MessageObject instance = new MessageObject();
+    private static final MessageObject instance = new MessageObject();
 
     //make the constructor private so that this class cannot be
     //instantiated
@@ -28,7 +28,7 @@ public class MessageObject {
     public void ShowDialogMessage(int gravity, Context context, String message, int type){
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.thongbao);
+        dialog.setContentView(R.layout.notification);
 
         Window window = dialog.getWindow();
         if(window == null){
@@ -41,17 +41,11 @@ public class MessageObject {
         windowAttributes.gravity = gravity;
         window.setAttributes(windowAttributes);
 
-        if(Gravity.BOTTOM == gravity)
-        {
-            dialog.setCancelable(true);
-        }
-        else {
-            dialog.setCancelable(false);
-        }
+        dialog.setCancelable(Gravity.BOTTOM == gravity);
 
-        TextView txt_name = (TextView) dialog.findViewById(R.id.dialogError2_name);
-        TextView txt_message = (TextView) dialog.findViewById(R.id.dialogError2_content);
-        Button btn_oke = (Button) dialog.findViewById(R.id.btn_dialogError_Oke);
+        TextView txt_name = dialog.findViewById(R.id.dialogError2_name);
+        TextView txt_message = dialog.findViewById(R.id.dialogError2_content);
+        Button btn_oke = dialog.findViewById(R.id.btn_dialogError_Oke);
 
         if(type == 1) txt_name.setText("SUCCESS");
         else txt_name.setText("ERROR");

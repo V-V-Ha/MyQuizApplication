@@ -2,27 +2,63 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.prm392myquizapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+
     <application
+        android:name=".other.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizForFun">
+        <activity android:name=".FinishDKActivity" />
+        <activity android:name=".FillBlanksActivity" />
+        <activity android:name=".BlankSentenceActivity" />
+        <activity android:name=".FinishQuizActivity" />
+        <activity android:name=".QuizActivity" />
+        <activity android:name=".VemoQuizActivity" />
+        <activity android:name=".AccountInformationActivity" />
+        <activity android:name=".FinishHTVActivity" />
+        <activity android:name=".VocabularyListActivity" />
+        <activity android:name=".StudyVocabularyActivity" />
+        <activity android:name=".ManageStudySetActivity"/>
+        <activity android:name=".EditStudySetActivity"/>
+        <activity android:name=".AddStudySetActivity"/>
+        <activity android:name=".ManageVocabularySetActivity"/>
+        <activity android:name=".ManageVocabularyActivity"/>
+        <activity android:name=".EditTuVungActivity"/>
+        <activity android:name=".AddVocabularyActivity"/>
+        <activity android:name=".ManaVemoQuizSetActivity"/>
+        <activity android:name=".ManageVemoQuizActivity"/>
+        <activity android:name=".AddVemoQuizActivity"/>
+        <activity android:name=".EditVemoQuizActivity"/>
+        <activity android:name=".ManageBlankSentenceSetActivity"/>
+        <activity android:name=".ManageBlankSentenceActivity"/>
+        <activity android:name=".AddBlankSentenceActivity"/>
+        <activity android:name=".EditBlankSentenceActivity"/>
+
+
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".OnlineLoginActivity"
-            android:exported="false"></activity>
+
         <activity
             android:name=".OnlineSignUpActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ChooseApplicationType"
-            android:exported="false" />
-        <activity
-            android:name=".QuizActivity"
+            android:name=".QuizListActivity"
             android:exported="false" />
         <activity
             android:name=".QuizManagementActivity"
@@ -37,10 +73,13 @@
         <activity android:name=".EditPasswordActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".VEMOHomeActivity" />
+        <activity android:name=".OnlineLoginActivity" />
+        <activity android:name=".LoginActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ChooseApplicationType"
             android:exported="true"
-            android:theme="@style/splashScreenTheme">
+          >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,6 +87,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <service android:name=".other.MyService"/>
+        <receiver android:name=".other.MyReceiver"/>
     </application>
 
 </manifest>

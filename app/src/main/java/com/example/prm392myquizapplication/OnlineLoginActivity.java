@@ -20,10 +20,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.annotations.NotNull;
 
 public class OnlineLoginActivity extends AppCompatActivity {
 
@@ -87,8 +85,7 @@ public class OnlineLoginActivity extends AppCompatActivity {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(getApplicationContext(),
                                                             "Login Successfully",
-                                                            Toast.LENGTH_LONG)
-                                                    .show();
+                                                            Toast.LENGTH_LONG).show();
 
                                             //notify
                                             Intent intent;
@@ -97,25 +94,11 @@ public class OnlineLoginActivity extends AppCompatActivity {
 
                                             DB.iduser = mAuth.getCurrentUser().getUid();
                                             DB.CapNhatUser(DB.iduser);
-                                            rootNode = FirebaseDatabase.getInstance();
-                                            userref = rootNode.getReference("User").child(DB.iduser);
-                                            userref.child("role").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull @NotNull Task<DataSnapshot> task) {
-                                                    int roleValue = Integer.parseInt(task.getResult().getValue().toString());
+                                            intent = new Intent(OnlineLoginActivity.this, VEMOHomeActivity.class);
+                                            startActivity(intent);
 
-//                                                    Intent intent;
-//                                                    if (roleValue == 0) {
-//                                                        intent = new Intent(OnlineLoginActivity.this, AdminActivity.class);
-//                                                    }
-//                                                    else {
-//                                                        intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                                    }
-//
-//                                                    startActivity(intent);
 
-                                                }
-                                            });
+
                                         }
                                         else {
                                             // sign-in failed
@@ -149,11 +132,11 @@ public class OnlineLoginActivity extends AppCompatActivity {
     }
     private void AnhXa()
     {
-        btnDangnhap=(Button) findViewById(R.id.btn_login);
-        tvDangky = (TextView) findViewById(R.id.textView_register);
-        tvforgotPassword = (TextView) findViewById(R.id.textView_forgotPassword);
-        edttaikhoan = (EditText) findViewById(R.id.edt_username);
-        edtmatkhau = (EditText) findViewById(R.id.edt_password);
+        btnDangnhap= findViewById(R.id.btn_login);
+        tvDangky = findViewById(R.id.textView_register);
+        tvforgotPassword = findViewById(R.id.textView_forgotPassword);
+        edttaikhoan = findViewById(R.id.edt_username);
+        edtmatkhau = findViewById(R.id.edt_password);
 
     }
 

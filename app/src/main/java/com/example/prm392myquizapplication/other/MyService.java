@@ -60,10 +60,8 @@ public class MyService extends Service {
     }
 
     private void handleActionNotify(int action){
-        switch (action){
-            case ACTION_OK:
-                okFunction();
-                break;
+        if (action == ACTION_OK) {
+            okFunction();
         }
     }
 

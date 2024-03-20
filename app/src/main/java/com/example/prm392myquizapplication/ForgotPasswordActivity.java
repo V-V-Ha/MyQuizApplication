@@ -23,15 +23,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
     private Button btnResetP;
 
     FirebaseAuth mAuth;
-    private MessageObject messageObject = MessageObject.getInstance();
+    private final MessageObject messageObject = MessageObject.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        EmailF = (EditText) findViewById(R.id.etEmailForgot);
-        btnResetP = (Button) findViewById(R.id.btnResetPass);
+        EmailF = findViewById(R.id.etEmailForgot);
+        btnResetP = findViewById(R.id.btnResetPass);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -62,7 +62,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(ForgotPasswordActivity.this,"Please check your email to get new password!", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    Intent intent = new Intent(getApplicationContext(),OnlineLoginActivity.class);
                     startActivity(intent);
                 }
                 else {
