@@ -14,6 +14,9 @@ public class PolicyActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.policy);
+
+            ImageView back =findViewById(R.id.imageViewHistory);
+            back.setOnClickListener(v -> finish());
         }
     }
 
