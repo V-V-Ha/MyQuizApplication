@@ -4,196 +4,190 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizActivity">
+    android:background="@color/blue_backgound">
 
-    <View
-        android:id="@+id/view4"
+    <TextView
+        android:id="@+id/tv_quiz_subject2"
         android:layout_width="wrap_content"
-        android:layout_height="130dp"
-        android:background="@drawable/background_bottom"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chakrapetchbold"
+        android:text="@string/literature_quiz"
+        android:textColor="@android:color/white"
+        android:textSize="46sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <View
-        android:id="@+id/view5"
-        android:layout_width="400dp"
-        android:layout_height="250dp"
 
-        android:layout_marginTop="4dp"
-        android:background="@drawable/rounded_box"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtquestcountTN" />
-
-    <TextView
-        android:id="@+id/txtscoreTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:drawableRight="@android:drawable/ic_menu_myplaces"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/fredokaoneregular"
-        android:text="Score: 0"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        app:drawableTint="@color/color_white"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <TextView
-        android:id="@+id/txtquestcountTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtscoreTN"
-
-
-        android:layout_marginTop="8dp"
-        android:drawableRight="@drawable/ic_question"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/fredokaoneregular"
-        android:text="Question: 1/x"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        app:drawableTint="@color/color_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txttimeTN">
-    </TextView>
-
-    <TextView
-        android:id="@+id/txttimeTN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="20dp"
-        android:layout_marginTop="8dp"
-        android:drawableLeft="@drawable/ic_timer"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/fredokaoneregular"
-        android:text="30:00"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
-
-    <TextView
-        android:id="@+id/txtquestionTN"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:fontFamily="@font/fredokaoneregular"
-        android:gravity="center"
-        android:text="Who invented android studio?"
-        android:textColor="@color/color_white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view5"
-        app:layout_constraintEnd_toEndOf="@+id/view5"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toTopOf="@+id/view5"></TextView>
+        android:background="@color/blue_backgound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_quiz_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="35dp"
+            android:fontFamily="@font/chakrapetchbold"
+            android:gravity="center"
+            android:text="@string/literature_quiz"
+            android:textColor="@color/black"
+            android:textSize="46sp"
+            app:layout_constraintStart_toStartOf="@id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout" />
+
+        <ImageView
+            android:id="@+id/imageViewStartQuiz"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow"
+            app:tint="@color/black" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="21dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="tv_quiz_subject" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_quiz_question"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/white"
+        android:text="What is the last name of Hitler?"
+        android:fontFamily="@font/chakrapetchbold"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.5" />
 
     <RadioGroup
-        android:id="@+id/radiochoices"
-        android:layout_width="wrap_content"
+        android:id="@+id/radioGroupQuiz"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtquestionTN"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/view5"
-        app:layout_constraintTop_toBottomOf="@+id/view5">
-        <RadioButton
-            android:id="@+id/op1"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/bgbtn"
-            android:text="Option 1"
-            android:fontFamily="@font/fredokaoneregular"
-            android:textColor="@color/black"
-            android:textSize="20sp"></RadioButton>
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_quiz_question">
 
         <RadioButton
-            android:id="@+id/op2"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/bgbtn"
-            android:text="Option 2"
-            android:fontFamily="@font/fredokaoneregular"
-            android:textColor="@color/black"
-            android:textSize="20sp"></RadioButton>
+            android:id="@+id/radioButton1"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:text="Answer 1"
+            android:textSize="25sp" />
 
         <RadioButton
-            android:id="@+id/op3"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/bgbtn"
-            android:text="Option 3"
-            android:fontFamily="@font/fredokaoneregular"
-            android:textColor="@color/black"
-            android:textSize="20sp"></RadioButton>
+            android:id="@+id/radioButton2"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 2" />
 
         <RadioButton
-            android:id="@+id/op4"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/bgbtn"
-            android:text="Option 4"
-            android:fontFamily="@font/fredokaoneregular"
-            android:textColor="@color/black"
-            android:textSize="20sp"></RadioButton>
+            android:id="@+id/radioButton3"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 3" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            style="@style/text_radio_button_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chakrapetchbold"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            android:textSize="25sp"
+            android:text="Answer 4" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/current_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/chakrapetchbold"
+        android:text="Question: 2"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/radioGroupQuiz"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupQuiz"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupQuiz" />
 
     <Button
-        android:id="@+id/btnQuitTN"
-        android:layout_width="150dp"
+        android:id="@+id/btnNextQuestion"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/button_1"
-        android:fontFamily="@font/fredokaoneregular"
-        android:insetLeft="0dp"
-        android:insetTop="0dp"
-        android:insetRight="0dp"
-        android:insetBottom="0dp"
-        android:text="Quit"
-        android:textColor="@color/color_white"
-        app:backgroundTint="#F50000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radiochoices">
-    </Button>
-
-    <Button
-        android:id="@+id/btnconfirmTN"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="false"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/button_2"
-        android:fontFamily="@font/fredokaoneregular"
-        android:insetLeft="0dp"
-        android:insetTop="0dp"
-        android:insetRight="0dp"
-        android:insetBottom="0dp"
-        android:text="Confirm"
-        android:textColor="@color/color_white"
-        app:backgroundTint="#6EE608"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
+        android:text="Next"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radiochoices">
-    </Button>
-
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_quiz"
+        app:layout_constraintWidth_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

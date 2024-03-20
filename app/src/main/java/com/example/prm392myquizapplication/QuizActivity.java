@@ -1,11 +1,9 @@
 package com.example.prm392myquizapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -14,223 +12,121 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.prm392myquizapplication.dao.Database;
-import com.example.prm392myquizapplication.dao.DatabaseAccess;
-import com.example.prm392myquizapplication.data.VemoQuiz;
-import com.example.prm392myquizapplication.data.OnlineUser;
+import com.example.prm392myquizapplication.data.Quiz;
+import com.example.prm392myquizapplication.data.Subject;
+import com.example.prm392myquizapplication.data.UserDatabaseClient;
+import com.example.prm392myquizapplication.other.Constants;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class QuizActivity extends AppCompatActivity {
 
-    final  String DATABASE_NAME = "HocNgonNgu.db";
-    SQLiteDatabase database;
-    DatabaseAccess DB;
-    TextView txtscore,txtquestcount,txtquestion,txttime;
-    RadioGroup rdgchoices;
-    RadioButton btnop1,btnop2,btnop3,btnop4;
-    Button btnconfirm;
-    Button btnquit;
-    private ArrayList<VemoQuiz> vemoQuizs;
-    int questioncurrent = 0;
-    int questiontrue = 0;
-    int answer=0;
-    int score=0;
-    int idbo;
+    TextView Title, tvQuestion, tvTotal;
 
-    OnlineUser user;
+    private Button btnNext;
 
+    private RadioGroup radioGroup;
+
+    private RadioButton radioButton1, radioButton2, radioButton3, radioButton4;
+    List<Quiz> quizList;
+    int currentQuiz = 0;
+    int correct = 0;
+
+    Subject subject;
+    private Quiz quiz;
+
+
+    @SuppressLint("StaticFieldLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        DB = DatabaseAccess.getInstance(getApplicationContext());
-        Anhxa();
 
-        LayUser();
-        Intent intent=getIntent();
-        idbo=intent.getIntExtra("Bo",0);
-        txttime.setText(" ");
+        quizList = new ArrayList<>();
+        currentQuiz = 0;
+        correct = 0;
+        Intent intent = getIntent();
 
-        vemoQuizs = new ArrayList<>();
-        AddArrayCTN();
+        if (intent != null) {
+            subject = (Subject) intent.getParcelableExtra(Constants.SUBJECT);
+            findViewById(R.id.imageViewStartQuiz).setOnClickListener(view -> finish());
 
-        if(vemoQuizs.size() <= 0) {
-            Toast.makeText(QuizActivity.this, "Nội dung sẽ cập nhật cập nhật trong thời gian sớm nhất! Mong mọi người thông càm!!", Toast.LENGTH_LONG).show();
-            Intent error = new Intent(QuizActivity.this, VemoQuizActivity.class);
+            new AsyncTask<Void, Void, List<Quiz>>() {
+                @Override
+                protected List<Quiz> doInBackground(Void... voids) {
+
+                    return UserDatabaseClient.getInstance(QuizActivity.this).quizDao().getQuizBySubject(subject.getSubjectID());
+                }
+
+                @Override
+                protected void onPostExecute(List<Quiz> quizzes) {
+                    quizList = quizzes;
+                    Title = (TextView) findViewById(R.id.tv_quiz_subject);
+                    tvQuestion = findViewById(R.id.tv_quiz_question);
+                    radioGroup = findViewById(R.id.radioGroupQuiz);
+                    radioButton1 = findViewById(R.id.radioButton1);
+                    radioButton2 = findViewById(R.id.radioButton2);
+                    radioButton3 = findViewById(R.id.radioButton3);
+                    radioButton4 = findViewById(R.id.radioButton4);
+                    btnNext = findViewById(R.id.btnNextQuestion);
+                    tvTotal = findViewById(R.id.current_quiz);
+
+                    Title.setText(subject.getSubjectName());
+
+                    btnNext.setOnClickListener(view -> {
+
+                        RadioButton radioButton =  findViewById(radioGroup.getCheckedRadioButtonId());
+                        if(radioButton == null){
+                            runOnUiThread(() -> Toast.makeText(QuizActivity.this, "Select Answer!!", Toast.LENGTH_SHORT).show());
+                            return;
+                        }
+                        boolean answer = quiz.getCorrectAnswer().equals(radioButton.getText().toString());
+                        if (answer){
+                            correct++;
+                        }
+
+                        if (btnNext.getText().equals(getString(R.string.next))){
+                            setData();
+                        }else{
+                            Intent intentResult = new Intent(QuizActivity.this,FinalResultActivity.class);
+                            intentResult.putExtra(Constants.SUBJECT,subject);
+                            intentResult.putExtra(Constants.CORRECT,correct);
+                            intentResult.putExtra(Constants.INCORRECT,quizList.size() - correct);
+                            intentResult.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intentResult);
+                            finish();
+                        }
+                    });
+
+                    if(quizList.size()==0){
+                        finish();
+                    }else{
+                        setData();
+                    }
+                }
+            }.execute();
+
+
+        }else {
             finish();
-            startActivity(error);
-        }
-        else {
-            shownextquestion(questioncurrent, vemoQuizs);
-
-            CountDownTimer countDownTimer=new CountDownTimer(3000,300) {
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    showanswer();
-                }
-
-                @Override
-                public void onFinish() {
-
-                    btnconfirm.setEnabled(true);
-                    shownextquestion(questioncurrent, vemoQuizs);
-                }
-            };
-            btnconfirm.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    checkans();
-                    questioncurrent++;
-                    countDownTimer.start();
-                }
-            });
-
-            btnquit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent
-                            = new Intent(QuizActivity.this,
-                            VemoQuizActivity.class);
-                    startActivity(intent);
-                }
-            });
         }
 
     }
-    public void Anhxa(){
-        txtscore= findViewById(R.id.txtscoreTN);
-        txtquestcount= findViewById(R.id.txtquestcountTN);
-        txtquestion= findViewById(R.id.txtquestionTN);
-        txttime= findViewById(R.id.txttimeTN);
-        rdgchoices= findViewById(R.id.radiochoices);
-        btnop1=findViewById(R.id.op1);
-        btnop2=findViewById(R.id.op2);
-        btnop3=findViewById(R.id.op3);
-        btnop4=findViewById(R.id.op4);
-        btnconfirm=findViewById(R.id.btnconfirmTN);
-        btnquit=findViewById(R.id.btnQuitTN);
-    }
 
-    private void AddArrayCTN(){
-        database = Database.initDatabase(QuizActivity.this, DATABASE_NAME);
-        Cursor cursor = database.rawQuery("SELECT * FROM TracNghiem WHERE ID_Bo = ?",new String[]{String.valueOf(idbo)});
-        vemoQuizs.clear();
-
-        for (int i = 0; i < cursor.getCount(); i++){
-            cursor.moveToPosition(i);
-            int idcau = cursor.getInt(0);
-            int idbo = cursor.getInt(1);
-            String noidung = cursor.getString(2);
-            String A = cursor.getString(3);
-            String B = cursor.getString(4);
-            String C = cursor.getString(5);
-            String D = cursor.getString(6);
-            String True = cursor.getString(7);
-
-            vemoQuizs.add(new VemoQuiz(idcau,idbo,noidung,A,B,C,D,True));
+    private void setData() {
+            quiz = quizList.get(currentQuiz);
+            tvQuestion.setText(quiz.getQuestion());
+            radioButton1.setText(quiz.getAnswer1());
+            radioButton2.setText(quiz.getAnswer2());
+            radioButton3.setText(quiz.getAnswer3());
+            radioButton4.setText(quiz.getAnswer4());
+            radioGroup.clearCheck();
+            tvTotal.setText("Current Quiz: "+ (++currentQuiz));
+        if (currentQuiz == Constants.QUESTION_SHOWING  - 1 || currentQuiz >= quizList.size()){
+            btnNext.setText(getText(R.string.finish));
         }
     }
 
-    public void LayUser()
-    {
-        database = Database.initDatabase(QuizActivity.this, DATABASE_NAME);
-        Cursor cursor = database.rawQuery("SELECT * FROM User WHERE ID_User = ?",new String[]{String.valueOf(DB.iduser)});
-        cursor.moveToNext();
-        String Iduser = cursor.getString(0);
-        String HoTen = cursor.getString(1);
-        String Email = cursor.getString(2);
-        String SDT = cursor.getString(3);
-;
-        user = new OnlineUser(Iduser,HoTen,Email,SDT);
-    }
-
-    public void shownextquestion(int pos, ArrayList<VemoQuiz> vemoQuizs){
-
-        txtquestcount.setText("Question: "+(questioncurrent+1)+"/"+ vemoQuizs.size());
-        rdgchoices.clearCheck();
-        btnop1.setBackground(this.getResources().getDrawable(R.drawable.bgbtn));
-        btnop2.setBackground(this.getResources().getDrawable(R.drawable.bgbtn));
-        btnop3.setBackground(this.getResources().getDrawable(R.drawable.bgbtn));
-        btnop4.setBackground(this.getResources().getDrawable(R.drawable.bgbtn));
-        if(pos== vemoQuizs.size()){
-
-            Intent intent=new Intent(QuizActivity.this,FinishQuizActivity.class);
-            intent.putExtra("score",score);
-            intent.putExtra("questiontrue", questiontrue);
-            intent.putExtra("qcount", pos);
-            startActivity(intent);
-        }
-        else {
-            answer=Integer.valueOf(vemoQuizs.get(pos).getDapanTrue());
-            txtquestion.setText(vemoQuizs.get(pos).getNoidung());
-            btnop1.setText(vemoQuizs.get(pos).getDapanA());
-            btnop2.setText(vemoQuizs.get(pos).getDapanB());
-            btnop3.setText(vemoQuizs.get(pos).getDapanC());
-            btnop4.setText(vemoQuizs.get(pos).getDapanD());
-        }
-
-
-    }
-    public void checkans(){
-        btnconfirm.setEnabled(false);
-        if(btnop1.isChecked()){
-            if(1==answer) {
-                questiontrue++;
-                score+=5;
-            }
-        }
-        if(btnop2.isChecked()){
-            if(2==answer) {
-                questiontrue++;
-                score+=5;
-            }
-        }
-        if(btnop3.isChecked()){
-            if(3==answer) {
-                questiontrue++;
-                score+=5;
-            }
-        }
-        if(btnop4.isChecked()){
-            if(4==answer) {
-                questiontrue++;
-                score+=5;
-            }
-        }
-
-        txtscore.setText("Score: "+score);
-    }
-    public void showanswer(){
-        if(1==answer) {
-            btnop1.setBackground(this.getResources().getDrawable(R.drawable.button_2));
-            btnop2.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop3.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop4.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-
-        }
-        if(2==answer) {
-            btnop1.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop2.setBackground(this.getResources().getDrawable(R.drawable.button_2));
-            btnop3.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop4.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-
-        }
-        if(3==answer) {
-            btnop1.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop2.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop3.setBackground(this.getResources().getDrawable(R.drawable.button_2));
-            btnop4.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-
-        }
-        if(4==answer) {
-            btnop1.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop2.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop3.setBackground(this.getResources().getDrawable(R.drawable.button_1));
-            btnop4.setBackground(this.getResources().getDrawable(R.drawable.button_2));
-
-        }
-    }
 }

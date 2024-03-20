@@ -52,23 +52,22 @@ public class FinalResultActivity extends AppCompatActivity {
             findViewById(R.id.imageViewFinalResultQuiz).setOnClickListener(view -> finish());
 
 
-            tvWellDone = findViewById(R.id.tvWellDone);
+           // tvWellDone = findViewById(R.id.tvWellDone);
             tvSubject = findViewById(R.id.textView16);
             tvCorrect = findViewById(R.id.textView19);
             tvIncorrect = findViewById(R.id.textView27);
             tvEarned = findViewById(R.id.textView28);
             tvOverall = findViewById(R.id.textView29);
-            tvDate = findViewById(R.id.textView30);
+      //      tvDate = findViewById(R.id.textView30);
             btnAgain = findViewById(R.id.btnFinishQuiz);
-
-            String wellDone = "WELL DONE, " + user.getUsername();
-            tvWellDone.setText(wellDone);
+//            String wellDone = "WELL DONE, " + user.getUsername();
+//          tvWellDone.setText(wellDone);
             tvSubject.setText(subject.getSubjectName());
             tvIncorrect.setText(String.valueOf(incorrect));
             tvCorrect.setText(String.valueOf(correct));
-            tvEarned.setText(String.valueOf(correct*20));
-            tvOverall.setText(String.valueOf((correct+incorrect)*20));
-            tvDate.setText(date.toString());
+            tvEarned.setText(String.valueOf(correct));
+            tvOverall.setText(String.valueOf((correct+incorrect)));
+           // tvDate.setText(date.toString());
 
             btnAgain.setOnClickListener(view -> {
                 Intent intent1 = new Intent(this, QuizListActivity.class);

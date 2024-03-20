@@ -2,6 +2,7 @@ package com.example.prm392myquizapplication;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +11,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392myquizapplication.adapter.QuizAdapter;
@@ -29,16 +32,26 @@ import java.util.List;
 public class QuizManagementActivity extends AppCompatActivity {
 
     private RecyclerView rvQuizzes;
-    @SuppressLint("StaticFieldLeak")
+    private RecyclerView selectSubject;
+
+
+    @SuppressLint({"StaticFieldLeak","MissingInflatedId", "LocalSuppress"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_management);
-
+        Button cvStartQuiz = findViewById(R.id.btn_take_quiz);
         //btnAdd = findViewById(R.id.btn_add_quiz);
         rvQuizzes = findViewById(R.id.rv_quiz_list);
-
+         TextView tv = findViewById(R.id.tv_quiz_name);
+        tv.setText(getIntent().getStringExtra("subject_name"));
         findViewById(R.id.imageViewQuiz).setOnClickListener(view -> finish());
+        cvStartQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(QuizManagementActivity.this, SelectSubjectActivity.class));
+            }
+        });
 
 
         findViewById(R.id.btn_add_quiz).setOnClickListener(view -> {
@@ -69,6 +82,7 @@ public class QuizManagementActivity extends AppCompatActivity {
                 protected void onPostExecute(List<Subject> subjects) {
                     SubjectListAdapter subjectAdapter = new SubjectListAdapter(QuizManagementActivity.this, subjects);
                     subjectInput.setAdapter(subjectAdapter);
+
                 }
             }.execute();
             // Thiết lập nút Add
@@ -155,7 +169,7 @@ public class QuizManagementActivity extends AppCompatActivity {
     }
 
     @SuppressLint("StaticFieldLeak")
-    class GetAllSelectedQuizTask extends AsyncTask<Void, Void, Void>{
+    class GetAllSelectedQuizTask extends AsyncTask<Void, Void, Void> {
         List<Quiz> quizzes = new ArrayList<>();
 
         public GetAllSelectedQuizTask() {
@@ -200,15 +214,13 @@ public class QuizManagementActivity extends AppCompatActivity {
                     answer4Input.setText(quiz.getAnswer4());
 
                     final RadioGroup correctInput = dialogView.findViewById(R.id.radio_group);
-                    if(quiz.getCorrectAnswer().equals(quiz.getAnswer1())){
+                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer1())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer1);
                         radioButton.setChecked(true);
-                    }else
-                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer2())){
+                    } else if (quiz.getCorrectAnswer().equals(quiz.getAnswer2())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer2);
                         radioButton.setChecked(true);
-                    }else
-                    if (quiz.getCorrectAnswer().equals(quiz.getAnswer3())){
+                    } else if (quiz.getCorrectAnswer().equals(quiz.getAnswer3())) {
                         RadioButton radioButton = dialogView.findViewById(R.id.radio_answer3);
                         radioButton.setChecked(true);
                     } else {

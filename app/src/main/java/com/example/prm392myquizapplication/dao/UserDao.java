@@ -41,4 +41,6 @@ public interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void saveAttempt(Attempt attempt);
+
+
 }

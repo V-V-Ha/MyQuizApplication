@@ -80,6 +80,10 @@
         <item name="android:textColor">@color/peach</item>
     </style>
 
+    <style name="text_heading2">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <style name="text_radio_button_answer">
         <item name="android:textSize">20sp</item>

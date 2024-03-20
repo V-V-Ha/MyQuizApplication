@@ -2,6 +2,7 @@ package com.example.prm392myquizapplication.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392myquizapplication.QuizManagementActivity;
 import com.example.prm392myquizapplication.R;
 import com.example.prm392myquizapplication.adapter.SubjectAdapter;
 import com.example.prm392myquizapplication.data.Subject;
@@ -186,9 +188,11 @@ public class QuizListFragment extends Fragment {
                                     @Override
                                     protected Void doInBackground(Void... voids) {
                                         try {
+                                            //THực hiện update trong DB
                                             UserDatabaseClient.getInstance(requireContext()).subjectDao().updateSubject(subject);
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject successfully!!!", Toast.LENGTH_SHORT).show());
                                         } catch (Exception ex) {
+                                            //Báo lỗi nếu xử lý DB không thành công
                                             requireActivity().runOnUiThread(() -> Toast.makeText(requireContext(), "Update Subject failed!!!", Toast.LENGTH_SHORT).show());
                                         }
 
@@ -198,7 +202,7 @@ public class QuizListFragment extends Fragment {
                                     @Override
                                     protected void onPostExecute(Void aVoid) {
                                         super.onPostExecute(aVoid);
-                                        // Cập nhật RecyclerView sau khi cập nhật Subject
+                                        // Load lại GetAllSelectedSubjectTask class
                                         new GetAllSelectedSubjectTask().execute();
                                     }
                                 }.execute();
@@ -252,6 +256,19 @@ public class QuizListFragment extends Fragment {
                             .show();
                 }
 
+            });
+
+            adapter.setOnSubjectClickListener(new SubjectAdapter.OnSubjectClickListener() {
+                @Override
+                public void onSubjectClick(Subject subject) {
+                    // Tạo 1 intent
+                    Intent intent = new Intent(requireContext(), QuizManagementActivity.class);
+                    //Put dữ liệu vào intent
+                    intent.putExtra("subject_id", subject.getSubjectID());
+                    intent.putExtra("subject_name", subject.getSubjectName());
+                    //Khởi chạy intent khi click
+                    startActivity(intent);
+                }
             });
 
             rvSelectedSubject.setAdapter(adapter);

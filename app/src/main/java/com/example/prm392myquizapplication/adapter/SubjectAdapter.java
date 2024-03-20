@@ -25,6 +25,16 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
     public interface OnUpdateClickListener {
         void onUpdateClick(Subject subject);
     }
+
+    public interface OnSubjectClickListener {
+        void onSubjectClick(Subject subject);
+    }
+
+    private OnSubjectClickListener subjectClickListener;
+
+    public void setOnSubjectClickListener(OnSubjectClickListener listener) {
+        this.subjectClickListener = listener;
+    }
     private OnUpdateClickListener onUpdateClickListener;
 
     // Thêm một phương thức để thiết lập listener
@@ -88,6 +98,16 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
             }
         });
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (subjectClickListener != null) {
+                    subjectClickListener.onSubjectClick(subject);
+
+                }
+            }
+        });
+
     }
 
     @Override
@@ -112,3 +132,4 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.Selected
         }
     }
 }
+

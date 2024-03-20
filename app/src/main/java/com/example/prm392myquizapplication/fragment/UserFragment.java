@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.prm392myquizapplication.EditPasswordActivity;
 import com.example.prm392myquizapplication.HistoryActivity;
 import com.example.prm392myquizapplication.LoginActivity;
+import com.example.prm392myquizapplication.PolicyActivity;
 import com.example.prm392myquizapplication.R;
 import com.example.prm392myquizapplication.data.User;
 import com.example.prm392myquizapplication.other.SharedPref;
@@ -87,7 +88,14 @@ public class UserFragment extends Fragment {
         Button btnChangePassword = view.findViewById(R.id.btn_change_password);
         Button btnHistory = view.findViewById(R.id.btn_history);
         Button btnLogout = view.findViewById(R.id.btn_logout);
+        Button btnPolicy = view.findViewById(R.id.btn_policy);
 
+        btnPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), PolicyActivity.class));
+            }
+        });
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
