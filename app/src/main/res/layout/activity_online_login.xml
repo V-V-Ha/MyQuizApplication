@@ -7,6 +7,19 @@
     tools:context=".OnlineLoginActivity">
 
 
+    <TextView
+        android:id="@+id/online_login_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Back"
+        android:textColor="@color/textHeadline"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView_logo"
         android:layout_width="289dp"
@@ -21,15 +34,16 @@
 
     <ImageView
         android:id="@+id/imageView_cloudLeft"
-        android:layout_marginTop="10dp"
-        android:scaleType="centerInside"
-        android:translationX="-20dp"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginTop="36dp"
+        android:scaleType="centerInside"
         android:src="@drawable/cloud"
+        android:translationX="-20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/lightGrey" />
+
     <ImageView
         android:id="@+id/imageView_cloudRight"
         android:layout_marginTop="120dp"

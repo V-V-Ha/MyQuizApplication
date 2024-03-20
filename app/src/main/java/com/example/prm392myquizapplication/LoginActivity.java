@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.tvUsername);
         etPassword = findViewById(R.id.tvPassword);
         TextView tvSignUp = findViewById(R.id.tvSignUp);
+        TextView back = findViewById(R.id.login_back_choose);
         Button btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +61,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ChooseApplicationType.class));
             }
         });
 

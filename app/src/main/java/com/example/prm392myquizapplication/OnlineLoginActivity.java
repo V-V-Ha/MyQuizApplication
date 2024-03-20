@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class OnlineLoginActivity extends AppCompatActivity {
 
     Button btnDangnhap;
-    TextView tvDangky, tvforgotPassword;
+    TextView tvDangky, tvforgotPassword, back;
     EditText edttaikhoan, edtmatkhau;
     DatabaseAccess DB;
     FirebaseDatabase rootNode; //f_instanse
@@ -129,6 +129,13 @@ public class OnlineLoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OnlineLoginActivity.this, ChooseApplicationType.class);
+                startActivity(intent);
+            }
+        });
     }
     private void AnhXa()
     {
@@ -137,6 +144,7 @@ public class OnlineLoginActivity extends AppCompatActivity {
         tvforgotPassword = findViewById(R.id.textView_forgotPassword);
         edttaikhoan = findViewById(R.id.edt_username);
         edtmatkhau = findViewById(R.id.edt_password);
+        back= findViewById(R.id.online_login_back);
 
     }
 
